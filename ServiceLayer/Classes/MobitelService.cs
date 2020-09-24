@@ -1,20 +1,26 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Model;
+using Microsoft.EntityFrameworkCore;
 using RepositoryLayer;
 using ServiceLayer.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Model.Requests;
+using Model.Models;
 
 namespace ServiceLayer
 {
     public class MobitelService : IMobitelService
     {
-        private IRepository<Mobiteli> mobitelRepository;
+        private readonly IMapper mapper;
+        private readonly IRepository<Mobiteli> mobitelRepository;
 
-        public MobitelService(IRepository<Mobiteli> mobitelRepository)
+        public MobitelService(IRepository<Mobiteli> mobitelRepository, IMapper mapper)
         {
             this.mobitelRepository = mobitelRepository;
+            this.mapper = mapper;
         }
         public IEnumerable<Mobiteli> GetMobiteli()
         {
@@ -62,6 +68,46 @@ namespace ServiceLayer
            
 
             return mobiteli.ToList();
+        }
+
+        public IEnumerable<Mobiteli> GetMobiteli(MobiteliSearchRequest search)
+        {
+            var query = mobitelRepository.GetAllQueryable();
+
+            if (!string.IsNullOrWhiteSpace(search?.Naziv))
+            {
+                query = query.Where(x => x.Naziv.StartsWith(search.Naziv));
+            }
+            if ((!string.IsNullOrWhiteSpace((search?.ProizvodjacId).ToString())) && search?.ProizvodjacId != 0)
+            {
+                query = query.Where(x => x.ProizvodjacId == search.ProizvodjacId);
+            }
+            if (search.CijenaOd != null)
+            {
+                query = query.Where(x => x.Cijena > search.CijenaOd);
+            }
+
+            if (search.CijenaDo != null)
+            {
+                query = query.Where(x => x.Cijena < search.CijenaDo);
+            }
+
+            return query.ToList();
+        }
+
+        public void Insert(MobiteliInsertRequest request)
+        {
+            var mobitel = mapper.Map<Mobiteli>(request);
+            mobitelRepository.Insert(mobitel);
+
+            
+        }
+
+        public void Update(int id, MobiteliInsertRequest request)
+        {
+            var entity = mobitelRepository.Get(id);
+            mapper.Map(request, entity);
+            mobitelRepository.Update(entity);
         }
     }
 }

@@ -15,19 +15,16 @@ namespace RepositoryLayer.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.6")
+                .HasAnnotation("ProductVersion", "3.1.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Administrator", b =>
+            modelBuilder.Entity("Model.Models.Administrator", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("ApplicationUserId")
-                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
@@ -43,8 +40,6 @@ namespace RepositoryLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApplicationUserId");
-
                     b.ToTable("Administratori");
 
                     b.HasData(
@@ -58,7 +53,7 @@ namespace RepositoryLayer.Migrations
                         });
                 });
 
-            modelBuilder.Entity("BannedKupac", b =>
+            modelBuilder.Entity("Model.Models.BannedKupac", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -79,37 +74,7 @@ namespace RepositoryLayer.Migrations
                     b.ToTable("BannedKupci");
                 });
 
-            modelBuilder.Entity("Dobavljac", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Broj")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Ime")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Mail")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Dobavljaci");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Broj = "063323718",
-                            Ime = "Samsung",
-                            Mail = "dobavljac@dobavljac.com"
-                        });
-                });
-
-            modelBuilder.Entity("Grad", b =>
+            modelBuilder.Entity("Model.Models.Grad", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -148,7 +113,7 @@ namespace RepositoryLayer.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Komentar", b =>
+            modelBuilder.Entity("Model.Models.Komentar", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -182,53 +147,19 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 1,
-                            Datum = new DateTime(2020, 7, 31, 12, 49, 32, 727, DateTimeKind.Local).AddTicks(5831),
+                            Datum = new DateTime(2020, 9, 23, 4, 19, 35, 117, DateTimeKind.Local).AddTicks(9652),
                             IsDeleted = false,
                             KupacId = 1,
                             MobitelId = 1
                         });
                 });
 
-            modelBuilder.Entity("Komponente", b =>
+            modelBuilder.Entity("Model.Models.Kupac", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("DobavljacID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Ime")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("KolicinaNaSkladistu")
-                        .HasColumnType("int");
-
-                    b.Property<double>("PreporucenaCijena")
-                        .HasColumnType("float");
-
-                    b.Property<int>("TipKomponenteId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DobavljacID");
-
-                    b.HasIndex("TipKomponenteId");
-
-                    b.ToTable("Komponente");
-                });
-
-            modelBuilder.Entity("Kupac", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("ApplicationUserId")
-                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int?>("BannedKupacId")
                         .HasColumnType("int");
@@ -256,8 +187,6 @@ namespace RepositoryLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApplicationUserId");
-
                     b.HasIndex("BannedKupacId");
 
                     b.HasIndex("GradId");
@@ -270,7 +199,7 @@ namespace RepositoryLayer.Migrations
                             Id = 1,
                             BrojMobitela = "063525555",
                             BrojPokusaja = 0,
-                            DatumPokusaja = new DateTime(2020, 7, 31, 12, 49, 32, 728, DateTimeKind.Local).AddTicks(4996),
+                            DatumPokusaja = new DateTime(2020, 9, 23, 4, 19, 35, 118, DateTimeKind.Local).AddTicks(3930),
                             Email = "kupac@kupac.com",
                             GradId = 1,
                             Ime = "kupac",
@@ -278,7 +207,7 @@ namespace RepositoryLayer.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Log", b =>
+            modelBuilder.Entity("Model.Models.Log", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -320,209 +249,7 @@ namespace RepositoryLayer.Migrations
                     b.ToTable("Log");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.Property<string>("NormalizedName")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedName")
-                        .IsUnique()
-                        .HasName("RoleNameIndex")
-                        .HasFilter("[NormalizedName] IS NOT NULL");
-
-                    b.ToTable("AspNetRoles");
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("ClaimType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ClaimValue")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("RoleId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RoleId");
-
-                    b.ToTable("AspNetRoleClaims");
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("AccessFailedCount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedEmail")
-                        .HasName("EmailIndex");
-
-                    b.HasIndex("NormalizedUserName")
-                        .IsUnique()
-                        .HasName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.ToTable("AspNetUsers");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser");
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("ClaimType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ClaimValue")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("AspNetUserClaims");
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
-                {
-                    b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("ProviderKey")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("ProviderDisplayName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("LoginProvider", "ProviderKey");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("AspNetUserLogins");
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
-                {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("RoleId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("UserId", "RoleId");
-
-                    b.HasIndex("RoleId");
-
-                    b.ToTable("AspNetUserRoles");
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
-                {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Value")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("UserId", "LoginProvider", "Name");
-
-                    b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("Mobiteli", b =>
+            modelBuilder.Entity("Model.Models.Mobiteli", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -568,6 +295,9 @@ namespace RepositoryLayer.Migrations
                     b.Property<string>("Procesor")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("ProdanoKomada")
+                        .HasColumnType("int");
+
                     b.Property<int?>("ProizvodjacId")
                         .HasColumnType("int");
 
@@ -610,6 +340,7 @@ namespace RepositoryLayer.Migrations
                             Opis = "Lorem Ipsum je jednostavno probni tekst koji se koristi u tiskarskoj i slovoslagarskoj industriji. Lorem Ipsum postoji kao industrijski standard još od 16-og stoljeća, kada je nepoznati tiskar uzeo tiskarsku galiju slova i posložio ih da bi napravio knjigu s uzorkom tiska. Taj je tekst ne samo preživio pet stoljeća, već se i vinuo u svijet elektronskog slovoslagarstva, ostajući u suštini nepromijenjen. Postao je popularan tijekom 1960-ih s pojavom Letraset listova s odlomcima Lorem Ipsum-a, a u skorije vrijeme sa software-om za stolno izdavaštvo kao što je Aldus PageMaker koji također sadrži varijante Lorem Ipsum-a.",
                             PopustId = 1,
                             Procesor = "Xenon A5G",
+                            ProdanoKomada = 0,
                             ProizvodjacId = 1,
                             Ram_Gb = 8f,
                             Rezolucija = "FULL HD IPS",
@@ -632,6 +363,7 @@ namespace RepositoryLayer.Migrations
                             Opis = "Lorem Ipsum je jednostavno probni tekst koji se koristi u tiskarskoj i slovoslagarskoj industriji. Lorem Ipsum postoji kao industrijski standard još od 16-og stoljeća, kada je nepoznati tiskar uzeo tiskarsku galiju slova i posložio ih da bi napravio knjigu s uzorkom tiska. Taj je tekst ne samo preživio pet stoljeća, već se i vinuo u svijet elektronskog slovoslagarstva, ostajući u suštini nepromijenjen. Postao je popularan tijekom 1960-ih s pojavom Letraset listova s odlomcima Lorem Ipsum-a, a u skorije vrijeme sa software-om za stolno izdavaštvo kao što je Aldus PageMaker koji također sadrži varijante Lorem Ipsum-a.",
                             PopustId = 1,
                             Procesor = "Xenon A5G",
+                            ProdanoKomada = 0,
                             ProizvodjacId = 1,
                             Ram_Gb = 8f,
                             Rezolucija = "FULL HD IPS",
@@ -654,6 +386,7 @@ namespace RepositoryLayer.Migrations
                             Opis = "Lorem Ipsum je jednostavno probni tekst koji se koristi u tiskarskoj i slovoslagarskoj industriji. Lorem Ipsum postoji kao industrijski standard još od 16-og stoljeća, kada je nepoznati tiskar uzeo tiskarsku galiju slova i posložio ih da bi napravio knjigu s uzorkom tiska. Taj je tekst ne samo preživio pet stoljeća, već se i vinuo u svijet elektronskog slovoslagarstva, ostajući u suštini nepromijenjen. Postao je popularan tijekom 1960-ih s pojavom Letraset listova s odlomcima Lorem Ipsum-a, a u skorije vrijeme sa software-om za stolno izdavaštvo kao što je Aldus PageMaker koji također sadrži varijante Lorem Ipsum-a.",
                             PopustId = 1,
                             Procesor = "Xenon A5G",
+                            ProdanoKomada = 0,
                             ProizvodjacId = 1,
                             Ram_Gb = 8f,
                             Rezolucija = "FULL HD IPS",
@@ -676,6 +409,7 @@ namespace RepositoryLayer.Migrations
                             Opis = "Lorem Ipsum je jednostavno probni tekst koji se koristi u tiskarskoj i slovoslagarskoj industriji. Lorem Ipsum postoji kao industrijski standard još od 16-og stoljeća, kada je nepoznati tiskar uzeo tiskarsku galiju slova i posložio ih da bi napravio knjigu s uzorkom tiska. Taj je tekst ne samo preživio pet stoljeća, već se i vinuo u svijet elektronskog slovoslagarstva, ostajući u suštini nepromijenjen. Postao je popularan tijekom 1960-ih s pojavom Letraset listova s odlomcima Lorem Ipsum-a, a u skorije vrijeme sa software-om za stolno izdavaštvo kao što je Aldus PageMaker koji također sadrži varijante Lorem Ipsum-a.",
                             PopustId = 1,
                             Procesor = "Xenon A5G",
+                            ProdanoKomada = 0,
                             ProizvodjacId = 4,
                             Ram_Gb = 8f,
                             Rezolucija = "FULL HD IPS",
@@ -698,6 +432,7 @@ namespace RepositoryLayer.Migrations
                             Opis = "Lorem Ipsum je jednostavno probni tekst koji se koristi u tiskarskoj i slovoslagarskoj industriji. Lorem Ipsum postoji kao industrijski standard još od 16-og stoljeća, kada je nepoznati tiskar uzeo tiskarsku galiju slova i posložio ih da bi napravio knjigu s uzorkom tiska. Taj je tekst ne samo preživio pet stoljeća, već se i vinuo u svijet elektronskog slovoslagarstva, ostajući u suštini nepromijenjen. Postao je popularan tijekom 1960-ih s pojavom Letraset listova s odlomcima Lorem Ipsum-a, a u skorije vrijeme sa software-om za stolno izdavaštvo kao što je Aldus PageMaker koji također sadrži varijante Lorem Ipsum-a.",
                             PopustId = 1,
                             Procesor = "Xenon A5G",
+                            ProdanoKomada = 0,
                             ProizvodjacId = 6,
                             Ram_Gb = 8f,
                             Rezolucija = "FULL HD IPS",
@@ -720,6 +455,7 @@ namespace RepositoryLayer.Migrations
                             Opis = "Lorem Ipsum je jednostavno probni tekst koji se koristi u tiskarskoj i slovoslagarskoj industriji. Lorem Ipsum postoji kao industrijski standard još od 16-og stoljeća, kada je nepoznati tiskar uzeo tiskarsku galiju slova i posložio ih da bi napravio knjigu s uzorkom tiska. Taj je tekst ne samo preživio pet stoljeća, već se i vinuo u svijet elektronskog slovoslagarstva, ostajući u suštini nepromijenjen. Postao je popularan tijekom 1960-ih s pojavom Letraset listova s odlomcima Lorem Ipsum-a, a u skorije vrijeme sa software-om za stolno izdavaštvo kao što je Aldus PageMaker koji također sadrži varijante Lorem Ipsum-a.",
                             PopustId = 1,
                             Procesor = "Xenon A5G",
+                            ProdanoKomada = 0,
                             ProizvodjacId = 2,
                             Ram_Gb = 8f,
                             Rezolucija = "FULL HD IPS",
@@ -741,6 +477,7 @@ namespace RepositoryLayer.Migrations
                             OperativniSustavId = 2,
                             Opis = "Lorem Ipsum je jednostavno probni tekst koji se koristi u tiskarskoj i slovoslagarskoj industriji. Lorem Ipsum postoji kao industrijski standard još od 16-og stoljeća, kada je nepoznati tiskar uzeo tiskarsku galiju slova i posložio ih da bi napravio knjigu s uzorkom tiska. Taj je tekst ne samo preživio pet stoljeća, već se i vinuo u svijet elektronskog slovoslagarstva, ostajući u suštini nepromijenjen. Postao je popularan tijekom 1960-ih s pojavom Letraset listova s odlomcima Lorem Ipsum-a, a u skorije vrijeme sa software-om za stolno izdavaštvo kao što je Aldus PageMaker koji također sadrži varijante Lorem Ipsum-a.",
                             Procesor = "Xenon A5G",
+                            ProdanoKomada = 0,
                             ProizvodjacId = 2,
                             Ram_Gb = 8f,
                             Rezolucija = "FULL HD IPS",
@@ -762,6 +499,7 @@ namespace RepositoryLayer.Migrations
                             OperativniSustavId = 2,
                             Opis = "Lorem Ipsum je jednostavno probni tekst koji se koristi u tiskarskoj i slovoslagarskoj industriji. Lorem Ipsum postoji kao industrijski standard još od 16-og stoljeća, kada je nepoznati tiskar uzeo tiskarsku galiju slova i posložio ih da bi napravio knjigu s uzorkom tiska. Taj je tekst ne samo preživio pet stoljeća, već se i vinuo u svijet elektronskog slovoslagarstva, ostajući u suštini nepromijenjen. Postao je popularan tijekom 1960-ih s pojavom Letraset listova s odlomcima Lorem Ipsum-a, a u skorije vrijeme sa software-om za stolno izdavaštvo kao što je Aldus PageMaker koji također sadrži varijante Lorem Ipsum-a.",
                             Procesor = "Xenon A5G",
+                            ProdanoKomada = 0,
                             ProizvodjacId = 2,
                             Ram_Gb = 8f,
                             Rezolucija = "FULL HD IPS",
@@ -783,6 +521,7 @@ namespace RepositoryLayer.Migrations
                             OperativniSustavId = 1,
                             Opis = "Lorem Ipsum je jednostavno probni tekst koji se koristi u tiskarskoj i slovoslagarskoj industriji. Lorem Ipsum postoji kao industrijski standard još od 16-og stoljeća, kada je nepoznati tiskar uzeo tiskarsku galiju slova i posložio ih da bi napravio knjigu s uzorkom tiska. Taj je tekst ne samo preživio pet stoljeća, već se i vinuo u svijet elektronskog slovoslagarstva, ostajući u suštini nepromijenjen. Postao je popularan tijekom 1960-ih s pojavom Letraset listova s odlomcima Lorem Ipsum-a, a u skorije vrijeme sa software-om za stolno izdavaštvo kao što je Aldus PageMaker koji također sadrži varijante Lorem Ipsum-a.",
                             Procesor = "Xenon A5G",
+                            ProdanoKomada = 0,
                             ProizvodjacId = 3,
                             Ram_Gb = 8f,
                             Rezolucija = "FULL HD IPS",
@@ -804,6 +543,7 @@ namespace RepositoryLayer.Migrations
                             OperativniSustavId = 1,
                             Opis = "Lorem Ipsum je jednostavno probni tekst koji se koristi u tiskarskoj i slovoslagarskoj industriji. Lorem Ipsum postoji kao industrijski standard još od 16-og stoljeća, kada je nepoznati tiskar uzeo tiskarsku galiju slova i posložio ih da bi napravio knjigu s uzorkom tiska. Taj je tekst ne samo preživio pet stoljeća, već se i vinuo u svijet elektronskog slovoslagarstva, ostajući u suštini nepromijenjen. Postao je popularan tijekom 1960-ih s pojavom Letraset listova s odlomcima Lorem Ipsum-a, a u skorije vrijeme sa software-om za stolno izdavaštvo kao što je Aldus PageMaker koji također sadrži varijante Lorem Ipsum-a.",
                             Procesor = "Xenon A5G",
+                            ProdanoKomada = 0,
                             ProizvodjacId = 3,
                             Ram_Gb = 8f,
                             Rezolucija = "FULL HD IPS",
@@ -825,6 +565,7 @@ namespace RepositoryLayer.Migrations
                             OperativniSustavId = 1,
                             Opis = "Lorem Ipsum je jednostavno probni tekst koji se koristi u tiskarskoj i slovoslagarskoj industriji. Lorem Ipsum postoji kao industrijski standard još od 16-og stoljeća, kada je nepoznati tiskar uzeo tiskarsku galiju slova i posložio ih da bi napravio knjigu s uzorkom tiska. Taj je tekst ne samo preživio pet stoljeća, već se i vinuo u svijet elektronskog slovoslagarstva, ostajući u suštini nepromijenjen. Postao je popularan tijekom 1960-ih s pojavom Letraset listova s odlomcima Lorem Ipsum-a, a u skorije vrijeme sa software-om za stolno izdavaštvo kao što je Aldus PageMaker koji također sadrži varijante Lorem Ipsum-a.",
                             Procesor = "Xenon A5G",
+                            ProdanoKomada = 0,
                             ProizvodjacId = 7,
                             Ram_Gb = 8f,
                             Rezolucija = "FULL HD IPS",
@@ -846,6 +587,7 @@ namespace RepositoryLayer.Migrations
                             OperativniSustavId = 1,
                             Opis = "Lorem Ipsum je jednostavno probni tekst koji se koristi u tiskarskoj i slovoslagarskoj industriji. Lorem Ipsum postoji kao industrijski standard još od 16-og stoljeća, kada je nepoznati tiskar uzeo tiskarsku galiju slova i posložio ih da bi napravio knjigu s uzorkom tiska. Taj je tekst ne samo preživio pet stoljeća, već se i vinuo u svijet elektronskog slovoslagarstva, ostajući u suštini nepromijenjen. Postao je popularan tijekom 1960-ih s pojavom Letraset listova s odlomcima Lorem Ipsum-a, a u skorije vrijeme sa software-om za stolno izdavaštvo kao što je Aldus PageMaker koji također sadrži varijante Lorem Ipsum-a.",
                             Procesor = "Xenon A5G",
+                            ProdanoKomada = 0,
                             ProizvodjacId = 8,
                             Ram_Gb = 8f,
                             Rezolucija = "FULL HD IPS",
@@ -867,6 +609,7 @@ namespace RepositoryLayer.Migrations
                             OperativniSustavId = 1,
                             Opis = "Lorem Ipsum je jednostavno probni tekst koji se koristi u tiskarskoj i slovoslagarskoj industriji. Lorem Ipsum postoji kao industrijski standard još od 16-og stoljeća, kada je nepoznati tiskar uzeo tiskarsku galiju slova i posložio ih da bi napravio knjigu s uzorkom tiska. Taj je tekst ne samo preživio pet stoljeća, već se i vinuo u svijet elektronskog slovoslagarstva, ostajući u suštini nepromijenjen. Postao je popularan tijekom 1960-ih s pojavom Letraset listova s odlomcima Lorem Ipsum-a, a u skorije vrijeme sa software-om za stolno izdavaštvo kao što je Aldus PageMaker koji također sadrži varijante Lorem Ipsum-a.",
                             Procesor = "Xenon A5G",
+                            ProdanoKomada = 0,
                             ProizvodjacId = 5,
                             Ram_Gb = 8f,
                             Rezolucija = "FULL HD IPS",
@@ -888,6 +631,7 @@ namespace RepositoryLayer.Migrations
                             OperativniSustavId = 1,
                             Opis = "Lorem Ipsum je jednostavno probni tekst koji se koristi u tiskarskoj i slovoslagarskoj industriji. Lorem Ipsum postoji kao industrijski standard još od 16-og stoljeća, kada je nepoznati tiskar uzeo tiskarsku galiju slova i posložio ih da bi napravio knjigu s uzorkom tiska. Taj je tekst ne samo preživio pet stoljeća, već se i vinuo u svijet elektronskog slovoslagarstva, ostajući u suštini nepromijenjen. Postao je popularan tijekom 1960-ih s pojavom Letraset listova s odlomcima Lorem Ipsum-a, a u skorije vrijeme sa software-om za stolno izdavaštvo kao što je Aldus PageMaker koji također sadrži varijante Lorem Ipsum-a.",
                             Procesor = "Xenon A5G",
+                            ProdanoKomada = 0,
                             ProizvodjacId = 5,
                             Ram_Gb = 8f,
                             Rezolucija = "FULL HD IPS",
@@ -910,6 +654,7 @@ namespace RepositoryLayer.Migrations
                             Opis = "Lorem Ipsum je jednostavno probni tekst koji se koristi u tiskarskoj i slovoslagarskoj industriji. Lorem Ipsum postoji kao industrijski standard još od 16-og stoljeća, kada je nepoznati tiskar uzeo tiskarsku galiju slova i posložio ih da bi napravio knjigu s uzorkom tiska. Taj je tekst ne samo preživio pet stoljeća, već se i vinuo u svijet elektronskog slovoslagarstva, ostajući u suštini nepromijenjen. Postao je popularan tijekom 1960-ih s pojavom Letraset listova s odlomcima Lorem Ipsum-a, a u skorije vrijeme sa software-om za stolno izdavaštvo kao što je Aldus PageMaker koji također sadrži varijante Lorem Ipsum-a.",
                             PopustId = 1,
                             Procesor = "Xenon A5G",
+                            ProdanoKomada = 0,
                             ProizvodjacId = 1,
                             Ram_Gb = 8f,
                             Rezolucija = "FULL HD IPS",
@@ -918,7 +663,7 @@ namespace RepositoryLayer.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Narudzba", b =>
+            modelBuilder.Entity("Model.Models.Narudzba", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -964,48 +709,10 @@ namespace RepositoryLayer.Migrations
 
                     b.HasIndex("KupacId");
 
-                    b.HasIndex("ZaposlenikId");
-
                     b.ToTable("Narudzbe");
                 });
 
-            modelBuilder.Entity("Novosti", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("Datum")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Naslov")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SadrzajTekst")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ZaposlenikId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ZaposlenikId");
-
-                    b.ToTable("Novosti");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Datum = new DateTime(2020, 7, 31, 12, 49, 32, 729, DateTimeKind.Local).AddTicks(1632),
-                            Naslov = "Novi iPhone stigao u BiH",
-                            SadrzajTekst = "ok mobitel",
-                            ZaposlenikId = 1
-                        });
-                });
-
-            modelBuilder.Entity("OperativniSustav", b =>
+            modelBuilder.Entity("Model.Models.OperativniSustav", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -1037,7 +744,7 @@ namespace RepositoryLayer.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Popusti", b =>
+            modelBuilder.Entity("Model.Models.Popusti", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -1061,50 +768,13 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 1,
-                            DatumDo = new DateTime(2020, 7, 31, 12, 49, 32, 726, DateTimeKind.Local).AddTicks(1312),
-                            DatumOd = new DateTime(2020, 7, 31, 12, 49, 32, 722, DateTimeKind.Local).AddTicks(7406),
+                            DatumDo = new DateTime(2020, 9, 23, 4, 19, 35, 116, DateTimeKind.Local).AddTicks(9684),
+                            DatumOd = new DateTime(2020, 9, 23, 4, 19, 35, 114, DateTimeKind.Local).AddTicks(4229),
                             PostotakPopusta = 0.1f
                         });
                 });
 
-            modelBuilder.Entity("Poruka", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("AdministratorId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("DatumSlanja")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("Hitno")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("Procitano")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Sadrzaj")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Subjekt")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ZaposlenikId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AdministratorId");
-
-                    b.HasIndex("ZaposlenikId");
-
-                    b.ToTable("Poruke");
-                });
-
-            modelBuilder.Entity("Proizvodjac", b =>
+            modelBuilder.Entity("Model.Models.Proizvodjac", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -1161,39 +831,7 @@ namespace RepositoryLayer.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Servis", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<double>("CijenaUkupno")
-                        .HasColumnType("float");
-
-                    b.Property<DateTime>("DatumPrijema")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DatumZavrsetka")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Opis")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("StanjeServisa")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ZaposlenikId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ZaposlenikId");
-
-                    b.ToTable("Servisi");
-                });
-
-            modelBuilder.Entity("Slika", b =>
+            modelBuilder.Entity("Model.Models.Slika", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -1206,124 +844,20 @@ namespace RepositoryLayer.Migrations
                     b.Property<int>("Order")
                         .HasColumnType("int");
 
-                    b.Property<string>("Path")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<byte[]>("SlikaFull")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<byte[]>("SlikaThumb")
+                        .HasColumnType("varbinary(max)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("MobitelId");
 
                     b.ToTable("Slike");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            MobitelId = 1,
-                            Order = 1,
-                            Path = "/Customer/slike/samsung.jpg"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            MobitelId = 2,
-                            Order = 1,
-                            Path = "/Customer/slike/samsungS20.jpg"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            MobitelId = 3,
-                            Order = 1,
-                            Path = "/Customer/slike/samsung_galaxy_a30.jpg"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            MobitelId = 4,
-                            Order = 1,
-                            Path = "/Customer/slike/redminote.jpg"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            MobitelId = 5,
-                            Order = 1,
-                            Path = "/Customer/slike/pixel4-2.jpg"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            MobitelId = 6,
-                            Order = 1,
-                            Path = "/Customer/slike/appiph11.jpg"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            MobitelId = 7,
-                            Order = 1,
-                            Path = "/Customer/slike/apple_iphone_xr.jpg"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            MobitelId = 8,
-                            Order = 1,
-                            Path = "/Customer/slike/iphone_8.jpg"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            MobitelId = 9,
-                            Order = 1,
-                            Path = "/Customer/slike/huawei_honor_9.jpg"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            MobitelId = 10,
-                            Order = 1,
-                            Path = "/Customer/slike/mate30pro.jpg"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            MobitelId = 11,
-                            Order = 1,
-                            Path = "/Customer/slike/catb26.jpg"
-                        },
-                        new
-                        {
-                            Id = 12,
-                            MobitelId = 12,
-                            Order = 1,
-                            Path = "/Customer/slike/yezz_classic_c221.jpg"
-                        },
-                        new
-                        {
-                            Id = 13,
-                            MobitelId = 13,
-                            Order = 1,
-                            Path = "/Customer/slike/nokia42.jpg"
-                        },
-                        new
-                        {
-                            Id = 14,
-                            MobitelId = 14,
-                            Order = 1,
-                            Path = "/Customer/slike/nokia42.jpg"
-                        },
-                        new
-                        {
-                            Id = 15,
-                            MobitelId = 15,
-                            Order = 1,
-                            Path = "/Customer/slike/nokia_210.png"
-                        });
                 });
 
-            modelBuilder.Entity("SmsLog", b =>
+            modelBuilder.Entity("Model.Models.SmsLog", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -1344,7 +878,7 @@ namespace RepositoryLayer.Migrations
                     b.ToTable("SmsLog");
                 });
 
-            modelBuilder.Entity("StavkaNarudzbe", b =>
+            modelBuilder.Entity("Model.Models.StavkaNarudzbe", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -1372,99 +906,7 @@ namespace RepositoryLayer.Migrations
                     b.ToTable("StavkeNarudzbe");
                 });
 
-            modelBuilder.Entity("StavkaServisa", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<double>("Cijena")
-                        .HasColumnType("float");
-
-                    b.Property<string>("Ime")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("KomponenteId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ServisId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("KomponenteId");
-
-                    b.HasIndex("ServisId");
-
-                    b.ToTable("StavkaServisa");
-                });
-
-            modelBuilder.Entity("TipKomponente", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Naziv")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TipKomponente");
-                });
-
-            modelBuilder.Entity("Zaposlenik", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("ApplicationUserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Gradid")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Ime")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Prezime")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Ulica")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("isDeleted")
-                        .HasColumnType("bit");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ApplicationUserId");
-
-                    b.HasIndex("Gradid");
-
-                    b.ToTable("Zaposlenici");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Email = "Zaposlenik@zaposlenik.com",
-                            Gradid = 1,
-                            Ime = "Zaposlenik",
-                            Prezime = "Zaposlenko",
-                            Ulica = "markovac",
-                            isDeleted = false
-                        });
-                });
-
-            modelBuilder.Entity("Zupanija", b =>
+            modelBuilder.Entity("Model.Models.Zupanija", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -1491,249 +933,96 @@ namespace RepositoryLayer.Migrations
                         });
                 });
 
-            modelBuilder.Entity("DataAccessLayer.ApplicationUser", b =>
+            modelBuilder.Entity("Model.Models.Grad", b =>
                 {
-                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
-
-                    b.HasDiscriminator().HasValue("ApplicationUser");
-                });
-
-            modelBuilder.Entity("Administrator", b =>
-                {
-                    b.HasOne("DataAccessLayer.ApplicationUser", "ApplicationUser")
-                        .WithMany("Administratori")
-                        .HasForeignKey("ApplicationUserId")
-                        .OnDelete(DeleteBehavior.Restrict);
-                });
-
-            modelBuilder.Entity("Grad", b =>
-                {
-                    b.HasOne("Zupanija", "Zupanija")
+                    b.HasOne("Model.Models.Zupanija", "Zupanija")
                         .WithMany("Grad")
                         .HasForeignKey("ZupanijaId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Komentar", b =>
+            modelBuilder.Entity("Model.Models.Komentar", b =>
                 {
-                    b.HasOne("Kupac", "Kupac")
+                    b.HasOne("Model.Models.Kupac", "Kupac")
                         .WithMany("Komentar")
                         .HasForeignKey("KupacId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Mobiteli", "Mobitel")
+                    b.HasOne("Model.Models.Mobiteli", "Mobitel")
                         .WithMany("Komentar")
                         .HasForeignKey("MobitelId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Komponente", b =>
+            modelBuilder.Entity("Model.Models.Kupac", b =>
                 {
-                    b.HasOne("Dobavljac", "Dobavljac")
-                        .WithMany("Komponente")
-                        .HasForeignKey("DobavljacID")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("TipKomponente", "TipKomponente")
-                        .WithMany("Komponente")
-                        .HasForeignKey("TipKomponenteId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Kupac", b =>
-                {
-                    b.HasOne("DataAccessLayer.ApplicationUser", "ApplicationUser")
-                        .WithMany("Kupci")
-                        .HasForeignKey("ApplicationUserId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("BannedKupac", "BannedKupac")
+                    b.HasOne("Model.Models.BannedKupac", "BannedKupac")
                         .WithMany("Kupac")
                         .HasForeignKey("BannedKupacId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("Grad", "Grad")
+                    b.HasOne("Model.Models.Grad", "Grad")
                         .WithMany("Kupac")
                         .HasForeignKey("GradId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+            modelBuilder.Entity("Model.Models.Mobiteli", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
-                        .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
-                {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
-                {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
-                {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
-                        .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
-                {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Mobiteli", b =>
-                {
-                    b.HasOne("OperativniSustav", "OperativniSustav")
+                    b.HasOne("Model.Models.OperativniSustav", "OperativniSustav")
                         .WithMany("Mobiteli")
                         .HasForeignKey("OperativniSustavId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("Popusti", "Popust")
+                    b.HasOne("Model.Models.Popusti", "Popust")
                         .WithMany()
                         .HasForeignKey("PopustId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("Proizvodjac", "Prozivodjac")
+                    b.HasOne("Model.Models.Proizvodjac", "Prozivodjac")
                         .WithMany("Mobiteli")
                         .HasForeignKey("ProizvodjacId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
-            modelBuilder.Entity("Narudzba", b =>
+            modelBuilder.Entity("Model.Models.Narudzba", b =>
                 {
-                    b.HasOne("Grad", null)
+                    b.HasOne("Model.Models.Grad", null)
                         .WithMany("Narudzba")
                         .HasForeignKey("GradId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("Kupac", "Kupac")
+                    b.HasOne("Model.Models.Kupac", "Kupac")
                         .WithMany("Narudzba")
                         .HasForeignKey("KupacId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-
-                    b.HasOne("Zaposlenik", "Zaposlenik")
-                        .WithMany("Narudzba")
-                        .HasForeignKey("ZaposlenikId")
-                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
-            modelBuilder.Entity("Novosti", b =>
+            modelBuilder.Entity("Model.Models.Slika", b =>
                 {
-                    b.HasOne("Zaposlenik", "Zaposlenik")
-                        .WithMany("Novosti")
-                        .HasForeignKey("ZaposlenikId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Poruka", b =>
-                {
-                    b.HasOne("Administrator", "Administrator")
-                        .WithMany("Poruka")
-                        .HasForeignKey("AdministratorId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Zaposlenik", "Zaposlenik")
-                        .WithMany("Poruka")
-                        .HasForeignKey("ZaposlenikId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Servis", b =>
-                {
-                    b.HasOne("Zaposlenik", "Zaposlenik")
-                        .WithMany("Servis")
-                        .HasForeignKey("ZaposlenikId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Slika", b =>
-                {
-                    b.HasOne("Mobiteli", "Mobitel")
+                    b.HasOne("Model.Models.Mobiteli", "Mobitel")
                         .WithMany("Slika")
                         .HasForeignKey("MobitelId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("StavkaNarudzbe", b =>
+            modelBuilder.Entity("Model.Models.StavkaNarudzbe", b =>
                 {
-                    b.HasOne("Mobiteli", "Mobitel")
+                    b.HasOne("Model.Models.Mobiteli", "Mobitel")
                         .WithMany("StavkaNarudzbe")
                         .HasForeignKey("MobitelId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Narudzba", "Narudzba")
+                    b.HasOne("Model.Models.Narudzba", "Narudzba")
                         .WithMany("StavkaNarudzbe")
                         .HasForeignKey("NarudzbaId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("StavkaServisa", b =>
-                {
-                    b.HasOne("Komponente", "Komponente")
-                        .WithMany("StavkaServisa")
-                        .HasForeignKey("KomponenteId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Servis", "Servis")
-                        .WithMany("StavkaServisa")
-                        .HasForeignKey("ServisId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Zaposlenik", b =>
-                {
-                    b.HasOne("DataAccessLayer.ApplicationUser", "ApplicationUser")
-                        .WithMany("Zaposlenici")
-                        .HasForeignKey("ApplicationUserId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("Grad", "Grad")
-                        .WithMany("Zaposlenik")
-                        .HasForeignKey("Gradid")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });

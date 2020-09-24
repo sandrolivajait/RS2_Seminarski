@@ -4,12 +4,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Model.Models;
 
 namespace ServiceLayer.Classes
 {
     public class ProizvodjacService : IProizvodjacService
     {
-        private IRepository<Proizvodjac> proizvodjacRepository;
+        private readonly IRepository<Proizvodjac> proizvodjacRepository;
 
         public ProizvodjacService(IRepository<Proizvodjac> gradRepository)
         {

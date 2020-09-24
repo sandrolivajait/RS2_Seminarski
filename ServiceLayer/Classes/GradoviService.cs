@@ -3,12 +3,13 @@ using ServiceLayer.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Model.Models;
 
 namespace ServiceLayer
 {
     public class GradoviService : IGradoviService
     {
-        private IRepository<Grad> gradRepository;
+        private readonly IRepository<Grad> gradRepository;
 
         public GradoviService(IRepository<Grad> gradRepository)
         {

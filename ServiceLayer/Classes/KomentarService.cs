@@ -3,6 +3,7 @@ using ServiceLayer.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Model.Models;
 using System.Text;
 
 namespace ServiceLayer.Classes
@@ -10,7 +11,7 @@ namespace ServiceLayer.Classes
 
     public class KomentarService : IKomentarService
     {
-        private IRepository<Komentar> komentarRepository;
+        private readonly IRepository<Komentar> komentarRepository;
 
         public KomentarService(IRepository<Komentar> komentarRepository)
         {

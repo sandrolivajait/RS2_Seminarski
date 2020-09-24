@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
+using Model.Models;
 
 namespace ServiceLayer.Classes
 {

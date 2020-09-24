@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Model.Models;
 
 namespace ServiceLayer.Interfaces
 {
@@ -10,6 +11,6 @@ namespace ServiceLayer.Interfaces
         Kupac GetKupac(int id);
 
         void InsertKupac(Kupac kupac);
-        int GetKupacByAspUserId(string userId);
+
     }
 }

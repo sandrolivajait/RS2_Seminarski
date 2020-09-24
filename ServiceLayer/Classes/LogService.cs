@@ -3,12 +3,13 @@ using ServiceLayer.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Model.Models;
 
 namespace ServiceLayer.Classes
 {
     public class LogService : ILogService
     {
-        private IRepository<Log> logRepository;
+        private readonly IRepository<Log> logRepository;
 
         public LogService(IRepository<Log> logRepository)
         {

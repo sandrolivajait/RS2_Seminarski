@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Model.Models;
 
 namespace RepositoryLayer
 {
@@ -11,7 +12,7 @@ namespace RepositoryLayer
         {
             modelBuilder.Entity<Administrator>().HasData(new Administrator { Id = 1, Email = "admin@admin.com", Ime = "admin", IsSuperAdmin = true, Prezime = "admin" });
 
-            modelBuilder.Entity<Dobavljac>().HasData(new Dobavljac { Id = 1, Ime = "Samsung", Broj = "063323718", Mail = "dobavljac@dobavljac.com" });
+            
             modelBuilder.Entity<Zupanija>().HasData(new Zupanija { Id = 1, Naziv = "Hercegovacko-Neretvanska" }, new Zupanija { Id = 2, Naziv = "Zapadno-Hercegovacka" });
             modelBuilder.Entity<Grad>().HasData(new Grad { Id = 1, ZupanijaId = 1, Naziv = "Citluk", PostanskiBroj = 88260 }, new Grad { Id = 2, ZupanijaId = 2, Naziv = "Siroki Brijeg", PostanskiBroj = 88520 });
 
@@ -356,118 +357,114 @@ namespace RepositoryLayer
 
             ); ;
             modelBuilder.Entity<Komentar>().HasData(new Komentar { Id = 1, Datum = DateTime.Now, IsDeleted = false, KupacId = 1, MobitelId = 1 });
-            modelBuilder.Entity<Slika>().HasData(
-                new Slika { 
-                    Id = 1,
-                    MobitelId = 1,
-                    Order = 1,
-                    Path = "/Customer/slike/samsung.jpg"
-                }, new Slika
-                {
-                    Id = 2,
-                    MobitelId = 2,
-                    Order = 1,
-                    Path = "/Customer/slike/samsungS20.jpg"
-                }, new Slika
-                {
-                    Id = 3,
-                    MobitelId = 3,
-                    Order = 1,
-                    Path = "/Customer/slike/samsung_galaxy_a30.jpg"
-                }
-                , new Slika
-                {
-                    Id = 4,
-                    MobitelId = 4,
-                    Order = 1,
-                    Path = "/Customer/slike/redminote.jpg"
-                }
-                , new Slika
-                {
-                    Id = 5,
-                    MobitelId = 5,
-                    Order = 1,
-                    Path = "/Customer/slike/pixel4-2.jpg"
-                }, new Slika
-                {
-                    Id = 6,
-                    MobitelId = 6,
-                    Order = 1,
-                    Path = "/Customer/slike/appiph11.jpg"
-                }, new Slika
-                {
-                    Id = 7,
-                    MobitelId = 7,
-                    Order = 1,
-                    Path = "/Customer/slike/apple_iphone_xr.jpg"
-                }, new Slika
-                {
-                    Id = 8,
-                    MobitelId = 8,
-                    Order = 1,
-                    Path = "/Customer/slike/iphone_8.jpg"
-                }, new Slika
-                {
-                    Id = 9,
-                    MobitelId = 9,
-                    Order = 1,
-                    Path = "/Customer/slike/huawei_honor_9.jpg"
-                }, new Slika
-                {
-                    Id = 10,
-                    MobitelId = 10,
-                    Order = 1,
-                    Path = "/Customer/slike/mate30pro.jpg"
-                }, new Slika
-                {
-                    Id = 11,
-                    MobitelId = 11,
-                    Order = 1,
-                    Path = "/Customer/slike/catb26.jpg"
-                }, new Slika
-                {
-                    Id = 12,
-                    MobitelId = 12,
-                    Order = 1,
-                    Path = "/Customer/slike/yezz_classic_c221.jpg"
-                }, new Slika
-                {
-                    Id = 13,
-                    MobitelId = 13,
-                    Order = 1,
-                    Path = "/Customer/slike/nokia42.jpg"
-                }
-                , new Slika
-                {
-                    Id = 14,
-                    MobitelId = 14,
-                    Order = 1,
-                    Path = "/Customer/slike/nokia42.jpg"
-                }, new Slika
-                {
-                    Id = 15,
-                    MobitelId = 15,
-                    Order = 1,
-                    Path = "/Customer/slike/nokia_210.png"
-                }
-                );
+            //modelBuilder.Entity<Slika>().HasData(
+            //    new Slika { 
+            //        Id = 1,
+            //        MobitelId = 1,
+            //        Order = 1,
+            //        Path = "/Customer/slike/samsung.jpg"
+            //    }, new Slika
+            //    {
+            //        Id = 2,
+            //        MobitelId = 2,
+            //        Order = 1,
+            //        Path = "/Customer/slike/samsungS20.jpg"
+            //    }, new Slika
+            //    {
+            //        Id = 3,
+            //        MobitelId = 3,
+            //        Order = 1,
+            //        Path = "/Customer/slike/samsung_galaxy_a30.jpg"
+            //    }
+            //    , new Slika
+            //    {
+            //        Id = 4,
+            //        MobitelId = 4,
+            //        Order = 1,
+            //        Path = "/Customer/slike/redminote.jpg"
+            //    }
+            //    , new Slika
+            //    {
+            //        Id = 5,
+            //        MobitelId = 5,
+            //        Order = 1,
+            //        Path = "/Customer/slike/pixel4-2.jpg"
+            //    }, new Slika
+            //    {
+            //        Id = 6,
+            //        MobitelId = 6,
+            //        Order = 1,
+            //        Path = "/Customer/slike/appiph11.jpg"
+            //    }, new Slika
+            //    {
+            //        Id = 7,
+            //        MobitelId = 7,
+            //        Order = 1,
+            //        Path = "/Customer/slike/apple_iphone_xr.jpg"
+            //    }, new Slika
+            //    {
+            //        Id = 8,
+            //        MobitelId = 8,
+            //        Order = 1,
+            //        Path = "/Customer/slike/iphone_8.jpg"
+            //    }, new Slika
+            //    {
+            //        Id = 9,
+            //        MobitelId = 9,
+            //        Order = 1,
+            //        Path = "/Customer/slike/huawei_honor_9.jpg"
+            //    }, new Slika
+            //    {
+            //        Id = 10,
+            //        MobitelId = 10,
+            //        Order = 1,
+            //        Path = "/Customer/slike/mate30pro.jpg"
+            //    }, new Slika
+            //    {
+            //        Id = 11,
+            //        MobitelId = 11,
+            //        Order = 1,
+            //        Path = "/Customer/slike/catb26.jpg"
+            //    }, new Slika
+            //    {
+            //        Id = 12,
+            //        MobitelId = 12,
+            //        Order = 1,
+            //        Path = "/Customer/slike/yezz_classic_c221.jpg"
+            //    }, new Slika
+            //    {
+            //        Id = 13,
+            //        MobitelId = 13,
+            //        Order = 1,
+            //        Path = "/Customer/slike/nokia42.jpg"
+            //    }
+            //    , new Slika
+            //    {
+            //        Id = 14,
+            //        MobitelId = 14,
+            //        Order = 1,
+            //        Path = "/Customer/slike/nokia42.jpg"
+            //    }, new Slika
+            //    {
+            //        Id = 15,
+            //        MobitelId = 15,
+            //        Order = 1,
+            //        Path = "/Customer/slike/nokia_210.png"
+            //    }
+            //    );
 
 
             modelBuilder.Entity<Kupac>().HasData(new Kupac { Id = 1, Email = "kupac@kupac.com", BrojMobitela = "063525555", Ime = "kupac", Prezime = "kupic", BrojPokusaja = 0, DatumPokusaja = DateTime.Now, GradId = 1 });
-            //modelBuilder.Entity<Komponente>().HasData();
+           
             //modelBuilder.Entity<Narudzba>().HasData();
-            modelBuilder.Entity<Zaposlenik>().HasData(new Zaposlenik { Id = 1, isDeleted = false, Ime = "Zaposlenik", Prezime = "Zaposlenko", Email = "Zaposlenik@zaposlenik.com", Gradid = 1,  Ulica = "markovac" });
-            modelBuilder.Entity<Novosti>().HasData(new Novosti { Id = 1, Datum = DateTime.Now, Naslov = "Novi iPhone stigao u BiH", SadrzajTekst = "ok mobitel", ZaposlenikId = 1 });
+           
 
-
-            //modelBuilder.Entity<Poruka>().HasData();
-
-            //modelBuilder.Entity<Servis>().HasData();
             
-            //modelBuilder.Entity<SmsLog>().HasData();
+            
+          
             //modelBuilder.Entity<StavkaNarudzbe>().HasData();
-            //modelBuilder.Entity<StavkaServisa>().HasData();
-            //modelBuilder.Entity<TipKomponente>().HasData();
+           
+           
 
             //modelBuilder.Entity<BannedKupac>().HasData();
             //modelBuilder.Entity<Log>().HasData();

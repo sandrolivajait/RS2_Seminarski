@@ -28,7 +28,6 @@ namespace Tests.TestsMethods
             var mobitelService = new Mock<IMobitelService>();
             var proizvodjacService = new Mock<IProizvodjacService>();
             var logService = new Mock<ILogService>();
-            var novostiService = new Mock<INovostiService>();
             var emailService = new Mock<IEmailService>();
 
 
