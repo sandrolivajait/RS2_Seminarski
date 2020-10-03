@@ -2,7 +2,7 @@
 using Model.Models;
 using System;
 
-namespace Model.Models
+namespace Model.Database
 {
     public class Grad : BaseEntity
     {

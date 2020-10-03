@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Model.Models;
+using Model.Database;
 
 namespace ServiceLayer.Interfaces
 {

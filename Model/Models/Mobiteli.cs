@@ -1,8 +1,11 @@
-namespace Model.Database
-{
-    public class Mobiteli : BaseEntity
-	{
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
+namespace Model.Models
+{
+    public class Mobiteli
+    {
 		public string Naziv { get; set; }
 
 		public string Opis { get; set; }
@@ -21,21 +24,19 @@ namespace Model.Database
 		public bool IsDeleted { get; set; }
 
 
-		public byte[] SlikaFull { get; set; }
+		public byte[] Slika { get; set; }
 		public byte[] SlikaThumb { get; set; }
+		
+		
 
-		public virtual System.Collections.Generic.List<StavkaNarudzbe> StavkaNarudzbe { get; set; }
-		public virtual System.Collections.Generic.List<Komentar> Komentar { get; set; }
-
-		public int? ProizvodjacId { get; set; }
-		public virtual Proizvodjac Prozivodjac { get; set; }
+		public int ProizvodjacId { get; set; }
+		public string Prozivodjac { get; set; }
 		public int? OperativniSustavId { get; set; }
-		public virtual OperativniSustav OperativniSustav { get; set; }
-		public int? PopustId { get; set; }
-		public virtual Popusti Popust { get; set; }
+		public string OperativniSustav { get; set; }
+		public int? PopustId{ get; set; }
 
-
+		public float? KolicinaPopustaDecimalni { get; set; }
+		
 		public int ProdanoKomada { get; set; }
-
 	}
 }

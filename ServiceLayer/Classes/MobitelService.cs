@@ -15,21 +15,21 @@ namespace ServiceLayer
     public class MobitelService : IMobitelService
     {
         private readonly IMapper mapper;
-        private readonly IRepository<Mobiteli> mobitelRepository;
+        private readonly IRepository<Model.Database.Mobiteli> mobitelRepository;
 
-        public MobitelService(IRepository<Mobiteli> mobitelRepository, IMapper mapper)
+        public MobitelService(IRepository<Model.Database.Mobiteli> mobitelRepository, IMapper mapper)
         {
             this.mobitelRepository = mobitelRepository;
             this.mapper = mapper;
         }
         public IEnumerable<Mobiteli> GetMobiteli()
         {
-            return mobitelRepository.GetAll();
+            return mapper.Map<List<Model.Models.Mobiteli>>(mobitelRepository.GetAll());
         }
 
         public Mobiteli GetMobitel(int id)
         {
-            return mobitelRepository.Get(id);
+            return mapper.Map<Model.Models.Mobiteli>(mobitelRepository.Get(id));
         }
 
         public IEnumerable<Mobiteli> GetMobiteliSorted(int page, bool priceDesc, string searchNaziv, string priceFromAndTo, int? ProizvodjacId, int resultsPerPage, ref int TotalPages)
@@ -65,9 +65,8 @@ namespace ServiceLayer
             if (page != 0)
                 page -= 1;
             mobiteli = mobiteli.Skip(resultsPerPage * page).Take(resultsPerPage);
-           
 
-            return mobiteli.ToList();
+            return mapper.Map<List<Model.Models.Mobiteli>>(mobiteli.ToList());
         }
 
         public IEnumerable<Mobiteli> GetMobiteli(MobiteliSearchRequest search)
@@ -92,15 +91,13 @@ namespace ServiceLayer
                 query = query.Where(x => x.Cijena < search.CijenaDo);
             }
 
-            return query.ToList();
+           return mapper.Map<List<Model.Models.Mobiteli>>(query.ToList());
         }
 
         public void Insert(MobiteliInsertRequest request)
         {
-            var mobitel = mapper.Map<Mobiteli>(request);
+            var mobitel = mapper.Map<Model.Database.Mobiteli>(request);
             mobitelRepository.Insert(mobitel);
-
-            
         }
 
         public void Update(int id, MobiteliInsertRequest request)
@@ -109,5 +106,7 @@ namespace ServiceLayer
             mapper.Map(request, entity);
             mobitelRepository.Update(entity);
         }
+
+       
     }
 }

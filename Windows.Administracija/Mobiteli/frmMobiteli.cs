@@ -30,7 +30,7 @@ namespace Windows.Administracija.Mobiteli
 
             cboxProizvodjaci.ValueMember = "Id";
             cboxProizvodjaci.DisplayMember = "Naziv";
-            cboxProizvodjaci.DataSource = await proizvodjaci.Get<List<Model.Models.Proizvodjac>>(null);
+            cboxProizvodjaci.DataSource = await proizvodjaci.Get<List<Model.Database.Proizvodjac>>(null);
             
             
 

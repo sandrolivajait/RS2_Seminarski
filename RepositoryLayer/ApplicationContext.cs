@@ -4,7 +4,7 @@ using System;
 
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using Model.Models;
+using Model.Database;
 
 namespace RepositoryLayer
 {
@@ -24,7 +24,6 @@ namespace RepositoryLayer
         public DbSet<OperativniSustav> OperativniSustavi { get; set; }
         public DbSet<Popusti> Popusti { get; set; }
         public DbSet<Proizvodjac> Proizvodjaci { get; set; }
-        public DbSet<Slika> Slike { get; set; }
         public DbSet<SmsLog> SmsLog { get; set; }
         public DbSet<StavkaNarudzbe> StavkeNarudzbe { get; set; }
 

@@ -1,0 +1,33 @@
+version: '3'
+services:
+#mssql docker
+  mobitelshop-sql:
+    image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+    restart: unless-stopped
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=QWElkj132!
+      - MSSQL_PID=Developer
+    ports:
+      - 1401:1433
+    networks:
+      - mobitelshopnet
+
+  mobitelshop-api:
+    restart: unless-stopped
+    build:
+      context: .
+    environment:
+      - ConnectionStrings:DefaultConnection=Server=mobitelshop-sql,1433;Database=MobitelShopDocker;User=sa;Password=QWElkj132!;ConnectRetryCount=0
+    ports:
+      - 5000:80
+    networks:
+      - mobitelshopnet      
+    links:
+      - mobitelshop-sql
+    depends_on:
+      - mobitelshop-sql
+
+networks:
+  mobitelshopnet:
+    driver: bridge       

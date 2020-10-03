@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Model.Models;
+using Model.Database;
 using System.Text;
 
 namespace ServiceLayer.Interfaces

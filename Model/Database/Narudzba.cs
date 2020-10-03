@@ -1,6 +1,6 @@
 using Model;
 using System;
-namespace Model.Models
+namespace Model.Database
 {
     public class Narudzba : BaseEntity
     {

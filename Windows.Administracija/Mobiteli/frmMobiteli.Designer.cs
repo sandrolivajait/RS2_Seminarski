@@ -29,10 +29,6 @@
         private void InitializeComponent()
         {
             this.dgvMobiteli = new System.Windows.Forms.DataGridView();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cijena = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProdanoKomada = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cboxProizvodjaci = new System.Windows.Forms.ComboBox();
             this.btnPretraga = new System.Windows.Forms.Button();
             this.txtNazivMobitela = new System.Windows.Forms.TextBox();
@@ -42,6 +38,15 @@
             this.label4 = new System.Windows.Forms.Label();
             this.numFromRange = new System.Windows.Forms.NumericUpDown();
             this.numToRange = new System.Windows.Forms.NumericUpDown();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Proizvodjac = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cijena = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProdanoKomada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.KratkiOpis = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StanjeNaSkladistu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Popust = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMobiteli)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numFromRange)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numToRange)).BeginInit();
@@ -61,9 +66,14 @@
             this.dgvMobiteli.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMobiteli.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
+            this.Proizvodjac,
             this.Naziv,
             this.Cijena,
-            this.ProdanoKomada});
+            this.ProdanoKomada,
+            this.KratkiOpis,
+            this.StanjeNaSkladistu,
+            this.Popust,
+            this.Opis});
             this.dgvMobiteli.Location = new System.Drawing.Point(12, 78);
             this.dgvMobiteli.Margin = new System.Windows.Forms.Padding(4);
             this.dgvMobiteli.Name = "dgvMobiteli";
@@ -74,39 +84,6 @@
             this.dgvMobiteli.Size = new System.Drawing.Size(776, 360);
             this.dgvMobiteli.TabIndex = 2;
             this.dgvMobiteli.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMobiteli_CellContentDoubleClick);
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.MinimumWidth = 6;
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            // 
-            // Naziv
-            // 
-            this.Naziv.DataPropertyName = "Naziv";
-            this.Naziv.HeaderText = "Naziv";
-            this.Naziv.MinimumWidth = 6;
-            this.Naziv.Name = "Naziv";
-            this.Naziv.ReadOnly = true;
-            // 
-            // Cijena
-            // 
-            this.Cijena.DataPropertyName = "Cijena";
-            this.Cijena.HeaderText = "Cijena";
-            this.Cijena.MinimumWidth = 6;
-            this.Cijena.Name = "Cijena";
-            this.Cijena.ReadOnly = true;
-            // 
-            // ProdanoKomada
-            // 
-            this.ProdanoKomada.DataPropertyName = "prodanoKomada";
-            this.ProdanoKomada.HeaderText = "ProdanoKomada";
-            this.ProdanoKomada.MinimumWidth = 6;
-            this.ProdanoKomada.Name = "ProdanoKomada";
-            this.ProdanoKomada.ReadOnly = true;
             // 
             // cboxProizvodjaci
             // 
@@ -198,6 +175,79 @@
             0,
             0});
             // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.MinimumWidth = 6;
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
+            // Proizvodjac
+            // 
+            this.Proizvodjac.DataPropertyName = "Proizvodjac";
+            this.Proizvodjac.HeaderText = "Proizvodjac";
+            this.Proizvodjac.MinimumWidth = 6;
+            this.Proizvodjac.Name = "Proizvodjac";
+            this.Proizvodjac.ReadOnly = true;
+            // 
+            // Naziv
+            // 
+            this.Naziv.DataPropertyName = "Naziv";
+            this.Naziv.HeaderText = "Naziv";
+            this.Naziv.MinimumWidth = 6;
+            this.Naziv.Name = "Naziv";
+            this.Naziv.ReadOnly = true;
+            // 
+            // Cijena
+            // 
+            this.Cijena.DataPropertyName = "Cijena";
+            this.Cijena.HeaderText = "Cijena";
+            this.Cijena.MinimumWidth = 6;
+            this.Cijena.Name = "Cijena";
+            this.Cijena.ReadOnly = true;
+            // 
+            // ProdanoKomada
+            // 
+            this.ProdanoKomada.DataPropertyName = "ProdanoKomada";
+            this.ProdanoKomada.HeaderText = "ProdanoKomada";
+            this.ProdanoKomada.MinimumWidth = 6;
+            this.ProdanoKomada.Name = "ProdanoKomada";
+            this.ProdanoKomada.ReadOnly = true;
+            // 
+            // KratkiOpis
+            // 
+            this.KratkiOpis.DataPropertyName = "KratkiOpis";
+            this.KratkiOpis.HeaderText = "KratkiOpis";
+            this.KratkiOpis.MinimumWidth = 6;
+            this.KratkiOpis.Name = "KratkiOpis";
+            this.KratkiOpis.ReadOnly = true;
+            // 
+            // StanjeNaSkladistu
+            // 
+            this.StanjeNaSkladistu.DataPropertyName = "StanjeNaSkladistu";
+            this.StanjeNaSkladistu.HeaderText = "U skladistu";
+            this.StanjeNaSkladistu.MinimumWidth = 6;
+            this.StanjeNaSkladistu.Name = "StanjeNaSkladistu";
+            this.StanjeNaSkladistu.ReadOnly = true;
+            // 
+            // Popust
+            // 
+            this.Popust.DataPropertyName = "KolicinaPopustaDecimalni";
+            this.Popust.HeaderText = "Popust";
+            this.Popust.MinimumWidth = 6;
+            this.Popust.Name = "Popust";
+            this.Popust.ReadOnly = true;
+            // 
+            // Opis
+            // 
+            this.Opis.DataPropertyName = "Opis";
+            this.Opis.HeaderText = "Opis";
+            this.Opis.MinimumWidth = 6;
+            this.Opis.Name = "Opis";
+            this.Opis.ReadOnly = true;
+            // 
             // frmMobiteli
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -227,10 +277,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvMobiteli;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Naziv;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cijena;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProdanoKomada;
         private System.Windows.Forms.ComboBox cboxProizvodjaci;
         private System.Windows.Forms.Button btnPretraga;
         private System.Windows.Forms.TextBox txtNazivMobitela;
@@ -240,5 +286,14 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.NumericUpDown numFromRange;
         private System.Windows.Forms.NumericUpDown numToRange;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Proizvodjac;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Naziv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cijena;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProdanoKomada;
+        private System.Windows.Forms.DataGridViewTextBoxColumn KratkiOpis;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StanjeNaSkladistu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Popust;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Opis;
     }
 }

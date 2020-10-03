@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-using Model.Models;
+using Model.Database;
 using Nexmo.Api.Request;
 using ServiceLayer.Classes.Helper;
 using Microsoft.Extensions.Configuration;

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Model.Models;
+using Model.Database;
 using ServiceLayer.Interfaces;
 
 namespace API.Controllers
