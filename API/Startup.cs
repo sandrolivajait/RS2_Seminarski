@@ -43,7 +43,7 @@ namespace API
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "My Api info", Version = "v1" });
-
+                c.CustomSchemaIds(x => x.FullName);
 
             });
 

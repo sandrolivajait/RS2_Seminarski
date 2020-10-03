@@ -34,7 +34,7 @@ namespace ServiceLayer
 
         public IEnumerable<Mobiteli> GetMobiteliSorted(int page, bool priceDesc, string searchNaziv, string priceFromAndTo, int? ProizvodjacId, int resultsPerPage, ref int TotalPages)
         {
-            var mobiteli = mobitelRepository.GetAllQueryable();
+            var mobiteli = mobitelRepository.GetAllQueryable().Include(x => x.OperativniSustav).Include(x => x.Popust).Include(x => x.Prozivodjac).AsQueryable();
             
 
             if(ProizvodjacId != null && ProizvodjacId != 0)
@@ -71,7 +71,7 @@ namespace ServiceLayer
 
         public IEnumerable<Mobiteli> GetMobiteli(MobiteliSearchRequest search)
         {
-            var query = mobitelRepository.GetAllQueryable();
+            var query = mobitelRepository.GetAllQueryable().Include(x => x.OperativniSustav).Include(x => x.Popust).Include(x => x.Prozivodjac).AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(search?.Naziv))
             {

@@ -26,7 +26,6 @@ namespace RepositoryLayer
         public DbSet<Proizvodjac> Proizvodjaci { get; set; }
         public DbSet<SmsLog> SmsLog { get; set; }
         public DbSet<StavkaNarudzbe> StavkeNarudzbe { get; set; }
-
         public DbSet<Zupanija> Zupanije { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

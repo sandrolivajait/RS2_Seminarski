@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Model.Requests;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Model;
 using ServiceLayer.Interfaces;
 using Model.Models;
 
