@@ -75,6 +75,7 @@
             this.dodavanjeToolStripMenuItem.Name = "dodavanjeToolStripMenuItem";
             this.dodavanjeToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.dodavanjeToolStripMenuItem.Text = "Dodavanje";
+            this.dodavanjeToolStripMenuItem.Click += new System.EventHandler(this.dodavanjeToolStripMenuItem_Click);
             // 
             // naruzbeToolStripMenuItem
             // 
@@ -87,7 +88,7 @@
             // pretragaToolStripMenuItem1
             // 
             this.pretragaToolStripMenuItem1.Name = "pretragaToolStripMenuItem1";
-            this.pretragaToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.pretragaToolStripMenuItem1.Size = new System.Drawing.Size(148, 26);
             this.pretragaToolStripMenuItem1.Text = "Pretraga";
             // 
             // narudzbeToolStripMenuItem
@@ -101,7 +102,7 @@
             // pretragaToolStripMenuItem2
             // 
             this.pretragaToolStripMenuItem2.Name = "pretragaToolStripMenuItem2";
-            this.pretragaToolStripMenuItem2.Size = new System.Drawing.Size(224, 26);
+            this.pretragaToolStripMenuItem2.Size = new System.Drawing.Size(148, 26);
             this.pretragaToolStripMenuItem2.Text = "Pretraga";
             // 
             // reportiToolStripMenuItem
@@ -110,14 +111,14 @@
             this.reportiToolStripMenuItem.Size = new System.Drawing.Size(72, 24);
             this.reportiToolStripMenuItem.Text = "Reporti";
             // 
-            // Form1
+            // StartForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Form1";
+            this.Name = "StartForm";
             this.Text = "Form1";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

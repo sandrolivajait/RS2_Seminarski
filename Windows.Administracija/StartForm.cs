@@ -23,5 +23,11 @@ namespace Windows.Administracija
             frmMobiteli frm = new frmMobiteli();
             frm.Show();
         }
+
+        private void dodavanjeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmMobitelDetalji frm = new frmMobitelDetalji(null);
+            frm.Show();
+        }
     }
 }

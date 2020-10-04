@@ -84,6 +84,7 @@
             this.dgvMobiteli.Size = new System.Drawing.Size(776, 360);
             this.dgvMobiteli.TabIndex = 2;
             this.dgvMobiteli.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMobiteli_CellContentDoubleClick);
+            this.dgvMobiteli.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMobiteli_CellDoubleClick);
             // 
             // cboxProizvodjaci
             // 
@@ -182,11 +183,10 @@
             this.Id.MinimumWidth = 6;
             this.Id.Name = "Id";
             this.Id.ReadOnly = true;
-            this.Id.Visible = false;
             // 
             // Proizvodjac
             // 
-            this.Proizvodjac.DataPropertyName = "Proizvodjac";
+            this.Proizvodjac.DataPropertyName = "Prozivodjac";
             this.Proizvodjac.HeaderText = "Proizvodjac";
             this.Proizvodjac.MinimumWidth = 6;
             this.Proizvodjac.Name = "Proizvodjac";

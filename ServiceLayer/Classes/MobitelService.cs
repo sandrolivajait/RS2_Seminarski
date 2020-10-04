@@ -29,7 +29,8 @@ namespace ServiceLayer
 
         public Mobiteli GetMobitel(int id)
         {
-            return mapper.Map<Model.Models.Mobiteli>(mobitelRepository.Get(id));
+            var mobitel = mobitelRepository.GetAllQueryable().Include(x => x.OperativniSustav).Include(x => x.Popust).Include(x => x.Prozivodjac).FirstOrDefault(x => x.Id == id);
+            return mapper.Map<Model.Models.Mobiteli>(mobitel);
         }
 
         public IEnumerable<Mobiteli> GetMobiteliSorted(int page, bool priceDesc, string searchNaziv, string priceFromAndTo, int? ProizvodjacId, int resultsPerPage, ref int TotalPages)

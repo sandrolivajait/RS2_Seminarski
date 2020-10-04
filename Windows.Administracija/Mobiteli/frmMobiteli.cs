@@ -71,5 +71,13 @@ namespace Windows.Administracija.Mobiteli
         {
             // implementiraj detalje mobitela.
         }
+
+        private void dgvMobiteli_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var mobitelid = dgvMobiteli.Rows[e.RowIndex].Cells[0].Value;
+
+            frmMobitelDetalji frm = new frmMobitelDetalji(int.Parse(mobitelid.ToString()));
+            frm.Show();
+        }
     }
 }

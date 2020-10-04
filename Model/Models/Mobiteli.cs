@@ -6,6 +6,7 @@ namespace Model.Models
 {
     public class Mobiteli
     {
+		public int Id { get; set; }
 		public string Naziv { get; set; }
 
 		public string Opis { get; set; }

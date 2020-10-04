@@ -57,6 +57,7 @@ namespace API
             services.AddTransient<ILogService, LogService>();
             services.AddTransient<ISmsService, SmsService>();
             services.AddTransient<IEmailService, EmailService>();
+            services.AddTransient<IOperativniSustaviService, OperativniSustavService>();
 
             // add our mail settings
             services.Configure<MailSettings>(Configuration.GetSection("MailSettings"));
