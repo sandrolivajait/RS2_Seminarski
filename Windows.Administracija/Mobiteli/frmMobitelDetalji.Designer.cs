@@ -54,9 +54,9 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.comboBoxOperativniSustav = new System.Windows.Forms.ComboBox();
-            this.textBox15 = new System.Windows.Forms.TextBox();
+            this.textBoxSlika = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonSave = new System.Windows.Forms.Button();
             this.richTextBoxOpis = new System.Windows.Forms.RichTextBox();
             this.richTextBoxKratkiOpis = new System.Windows.Forms.RichTextBox();
             this.label18 = new System.Windows.Forms.Label();
@@ -69,6 +69,11 @@
             this.checkBoxEksternaMemorija = new System.Windows.Forms.CheckBox();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.numericUpDownDijagonalaEkrana = new System.Windows.Forms.NumericUpDown();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.dateTimePickerPopustOd = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerPopustDo = new System.Windows.Forms.DateTimePicker();
+            this.labelPopustOd = new System.Windows.Forms.Label();
+            this.labelPopustDo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSlika)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPopust)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMegapikseli)).BeginInit();
@@ -101,7 +106,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(396, 142);
+            this.label2.Location = new System.Drawing.Point(386, 185);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 17);
             this.label2.TabIndex = 3;
@@ -322,12 +327,12 @@
             this.comboBoxOperativniSustav.TabIndex = 34;
             this.comboBoxOperativniSustav.Validating += new System.ComponentModel.CancelEventHandler(this.comboBoxOperativniSustav_Validating);
             // 
-            // textBox15
+            // textBoxSlika
             // 
-            this.textBox15.Location = new System.Drawing.Point(685, 369);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(321, 22);
-            this.textBox15.TabIndex = 36;
+            this.textBoxSlika.Location = new System.Drawing.Point(685, 369);
+            this.textBoxSlika.Name = "textBoxSlika";
+            this.textBoxSlika.Size = new System.Drawing.Size(321, 22);
+            this.textBoxSlika.TabIndex = 36;
             // 
             // button1
             // 
@@ -337,22 +342,24 @@
             this.button1.TabIndex = 37;
             this.button1.Text = "Odaberi sliku...";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // buttonSave
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.button2.Location = new System.Drawing.Point(685, 464);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(321, 176);
-            this.button2.TabIndex = 38;
-            this.button2.Text = "Sacuvaj";
-            this.button2.UseVisualStyleBackColor = false;
+            this.buttonSave.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.buttonSave.Location = new System.Drawing.Point(685, 464);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(321, 176);
+            this.buttonSave.TabIndex = 38;
+            this.buttonSave.Text = "Sacuvaj";
+            this.buttonSave.UseVisualStyleBackColor = false;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // richTextBoxOpis
             // 
-            this.richTextBoxOpis.Location = new System.Drawing.Point(389, 162);
+            this.richTextBoxOpis.Location = new System.Drawing.Point(389, 226);
             this.richTextBoxOpis.Name = "richTextBoxOpis";
-            this.richTextBoxOpis.Size = new System.Drawing.Size(255, 344);
+            this.richTextBoxOpis.Size = new System.Drawing.Size(255, 280);
             this.richTextBoxOpis.TabIndex = 39;
             this.richTextBoxOpis.Text = "";
             this.richTextBoxOpis.Validating += new System.ComponentModel.CancelEventHandler(this.richTextBoxOpis_Validating);
@@ -567,11 +574,55 @@
             0,
             0});
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // dateTimePickerPopustOd
+            // 
+            this.dateTimePickerPopustOd.Location = new System.Drawing.Point(463, 128);
+            this.dateTimePickerPopustOd.Name = "dateTimePickerPopustOd";
+            this.dateTimePickerPopustOd.Size = new System.Drawing.Size(200, 22);
+            this.dateTimePickerPopustOd.TabIndex = 51;
+            this.dateTimePickerPopustOd.Visible = false;
+            // 
+            // dateTimePickerPopustDo
+            // 
+            this.dateTimePickerPopustDo.Location = new System.Drawing.Point(463, 156);
+            this.dateTimePickerPopustDo.Name = "dateTimePickerPopustDo";
+            this.dateTimePickerPopustDo.Size = new System.Drawing.Size(200, 22);
+            this.dateTimePickerPopustDo.TabIndex = 52;
+            this.dateTimePickerPopustDo.Visible = false;
+            // 
+            // labelPopustOd
+            // 
+            this.labelPopustOd.AutoSize = true;
+            this.labelPopustOd.Location = new System.Drawing.Point(386, 128);
+            this.labelPopustOd.Name = "labelPopustOd";
+            this.labelPopustOd.Size = new System.Drawing.Size(71, 17);
+            this.labelPopustOd.TabIndex = 53;
+            this.labelPopustOd.Text = "PopustOd";
+            this.labelPopustOd.Visible = false;
+            // 
+            // labelPopustDo
+            // 
+            this.labelPopustDo.AutoSize = true;
+            this.labelPopustDo.Location = new System.Drawing.Point(386, 156);
+            this.labelPopustDo.Name = "labelPopustDo";
+            this.labelPopustDo.Size = new System.Drawing.Size(70, 17);
+            this.labelPopustDo.TabIndex = 54;
+            this.labelPopustDo.Text = "PopustDo";
+            this.labelPopustDo.Visible = false;
+            // 
             // frmMobitelDetalji
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1048, 673);
+            this.Controls.Add(this.labelPopustDo);
+            this.Controls.Add(this.labelPopustOd);
+            this.Controls.Add(this.dateTimePickerPopustDo);
+            this.Controls.Add(this.dateTimePickerPopustOd);
             this.Controls.Add(this.numericUpDownDijagonalaEkrana);
             this.Controls.Add(this.checkBoxEksternaMemorija);
             this.Controls.Add(this.numericUpDownTezina);
@@ -583,9 +634,9 @@
             this.Controls.Add(this.richTextBoxKratkiOpis);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.richTextBoxOpis);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox15);
+            this.Controls.Add(this.textBoxSlika);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.comboBoxOperativniSustav);
             this.Controls.Add(this.label16);
@@ -656,9 +707,9 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.ComboBox comboBoxOperativniSustav;
-        private System.Windows.Forms.TextBox textBox15;
+        private System.Windows.Forms.TextBox textBoxSlika;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.RichTextBox richTextBoxOpis;
         private System.Windows.Forms.RichTextBox richTextBoxKratkiOpis;
         private System.Windows.Forms.Label label18;
@@ -671,5 +722,10 @@
         private System.Windows.Forms.CheckBox checkBoxEksternaMemorija;
         private System.Windows.Forms.ErrorProvider errorProvider;
         private System.Windows.Forms.NumericUpDown numericUpDownDijagonalaEkrana;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Label labelPopustDo;
+        private System.Windows.Forms.Label labelPopustOd;
+        private System.Windows.Forms.DateTimePicker dateTimePickerPopustDo;
+        private System.Windows.Forms.DateTimePicker dateTimePickerPopustOd;
     }
 }

@@ -51,8 +51,12 @@ namespace Model.Requests
 		[Required(ErrorMessage = "Morate unijeti ovo polje")]
 		public int OperativniSustavId { get; set; }
 
-		[Required(ErrorMessage = "Morate unijeti ovo polje")]
-		public int PopustId { get; set; }
+		
+		
+		public int? PopustId { get; set; }
+		public DateTime PopustOd { get; set; }
+		public DateTime PopustDo { get; set; }
+		public decimal KolicinaPopusta { get; set; }
 
 		[Required(ErrorMessage = "Morate unijeti ovo polje")]
 		public int ProizvodjacId { get; set; }

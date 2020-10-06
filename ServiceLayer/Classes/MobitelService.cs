@@ -16,11 +16,13 @@ namespace ServiceLayer
     {
         private readonly IMapper mapper;
         private readonly IRepository<Model.Database.Mobiteli> mobitelRepository;
+        private readonly IRepository<Model.Database.Popusti> popustRepository;
 
-        public MobitelService(IRepository<Model.Database.Mobiteli> mobitelRepository, IMapper mapper)
+        public MobitelService(IRepository<Model.Database.Mobiteli> mobitelRepository, IMapper mapper, IRepository<Model.Database.Popusti> popustRepository)
         {
             this.mobitelRepository = mobitelRepository;
             this.mapper = mapper;
+            this.popustRepository = popustRepository;
         }
         public IEnumerable<Mobiteli> GetMobiteli()
         {
@@ -97,6 +99,16 @@ namespace ServiceLayer
 
         public void Insert(MobiteliInsertRequest request)
         {
+            //if(request.PopustId != null)
+            //{
+            //    request.PopustId = popustRepository.InsertAndReturnEntityId(new Model.Database.Popusti
+            //    {
+            //        DatumDo = request.PopustDo,
+            //        DatumOd = request.PopustOd,
+            //        PostotakPopusta = (float)request.KolicinaPopusta
+            //    });
+            //}
+            
             var mobitel = mapper.Map<Model.Database.Mobiteli>(request);
             mobitelRepository.Insert(mobitel);
         }

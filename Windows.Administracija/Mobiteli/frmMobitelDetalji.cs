@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model.Requests;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +17,8 @@ namespace Windows.Administracija.Mobiteli
         private readonly APIService _proizvodjaci = new APIService("Proizvodjaci");
         private readonly APIService _operativniSustavi = new APIService("OperativniSustavi");
         private readonly APIService _mobiteli = new APIService("Mobiteli");
+        MobiteliInsertRequest request = new MobiteliInsertRequest();
+
         private int? _id = null;
 
         public frmMobitelDetalji(int? id)
@@ -54,6 +57,8 @@ namespace Windows.Administracija.Mobiteli
                 richTextBoxKratkiOpis.Text = entity.KratkiOpis;
                 numericUpDownDijagonalaEkrana.Value = (decimal)entity.DijagonalaEkrana;
                 cboxPopust.Checked = entity.PopustId != null;
+                request.PopustId = entity.PopustId;
+
                 if (cboxPopust.Checked)
                 {
                     nudPopust.Show();
@@ -173,12 +178,102 @@ namespace Windows.Administracija.Mobiteli
 
         private void cboxPopust_CheckedChanged(object sender, EventArgs e)
         {
-            if (cboxPopust.Checked)
+            if (cboxPopust.Checked) { 
                 nudPopust.Show();
-            else
+                labelPopustDo.Show();
+                labelPopustOd.Show();
+                dateTimePickerPopustDo.Show();
+                dateTimePickerPopustOd.Show();
+            }
+            else { 
                 nudPopust.Hide();
+                labelPopustDo.Hide();
+                labelPopustOd.Hide();
+                dateTimePickerPopustDo.Hide();
+                dateTimePickerPopustOd.Hide();
+            }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var result = openFileDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string fileName = openFileDialog1.FileName;
+                var file = File.ReadAllBytes(fileName);
+                request.Slika = file;
+                textBoxSlika.Text = fileName;
 
+                Image image = Image.FromFile(fileName);
+                Image thumb = image.GetThumbnailImage(120, 120, () => false, IntPtr.Zero);
+                thumb.Save(Path.ChangeExtension(fileName, "thumb"));
+
+
+                request.SlikaThumb = ImageToByteArray(thumb);
+
+
+                pictureBoxSlika.Image = thumb;
+            }
+        }
+
+        public static byte[] ImageToByteArray(Image x)
+        {
+            ImageConverter _imageConverter = new ImageConverter();
+            byte[] xByte = (byte[])_imageConverter.ConvertTo(x, typeof(byte[]));
+            return xByte;
+
+        }
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            request.Naziv = txtNaziv.Text;
+            request.ProizvodjacId = (int)comboBoxProizvodjac.SelectedValue;
+            request.OperativniSustavId = (int)comboBoxOperativniSustav.SelectedValue;
+            request.Megapikseli = (float)numericUpDownMegapikseli.Value;
+            request.Ram_Gb = (float)numericUpDownRAM.Value;
+            request.StanjeNaSkladistu = (int)numericUpDownStanjeNaSkladistu.Value ;
+            request.EksternaMemorija = checkBoxEksternaMemorija.Checked;
+            request.Cijena = (double)numericUpDownCijena.Value;
+            request.KapacitetBaterije = (int)numericUpDownKapacitetBaterije.Value;
+            request.Tezina = (int)numericUpDownTezina.Value;
+            request.Rezolucija = textBoxRezolucija.Text;
+            request.Procesor = textBoxProcesor.Text;
+            request.Graficka = textBoxGraficka.Text;
+            request.Opis = richTextBoxOpis.Text;
+            request.KratkiOpis = richTextBoxKratkiOpis.Text;
+
+            request.DijagonalaEkrana = (float)numericUpDownDijagonalaEkrana.Value;
+            
+           
+
+            if (cboxPopust.Checked)
+            {
+                request.KolicinaPopusta = nudPopust.Value;
+                request.PopustOd = dateTimePickerPopustOd.Value;
+                request.PopustDo = dateTimePickerPopustDo.Value;
+            }
+
+            if(pictureBoxSlika.Image != null)
+            {
+                Image i = pictureBoxSlika.Image;
+                request.Slika = ImageToByteArray(i);
+                Image thumb = i.GetThumbnailImage(120, 120, () => false, IntPtr.Zero);
+                request.SlikaThumb = ImageToByteArray(thumb);
+            }
+
+            if (!_id.HasValue)
+            {
+                _mobiteli.Insert<Model.Models.Mobiteli>(request);
+                MessageBox.Show("Uspješno dodan artikal");
+            }
+            else
+            {
+                _mobiteli.Update<Model.Models.Mobiteli>(_id.Value, request);
+                MessageBox.Show("Uspješno izmjenjeni podaci o artiklu");
+            }
+
+            Form.ActiveForm.Close();
+
+        }
     }
 }

@@ -106,9 +106,11 @@ namespace Windows.Administracija
                 var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
 
                 var stringBuilder = new StringBuilder();
+                if(errors != null) { 
                 foreach (var error in errors)
                 {
                     stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
+                }
                 }
 
                 MessageBox.Show(stringBuilder.ToString(), "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
