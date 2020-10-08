@@ -61,5 +61,12 @@ namespace Windows.Administracija
 
             frm.Show();
         }
+
+        private void pretragaToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            frmNarudzbe frm = new frmNarudzbe();
+
+            frm.Show();
+        }
     }
 }

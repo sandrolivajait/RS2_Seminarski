@@ -40,6 +40,13 @@ namespace API.Mappers
             CreateMap<Model.Requests.KupacInsertRequest, Model.Database.Kupac>()
                 .BeforeMap((src, dest) => dest.LozinkaSalt = SaltingHashes.GenerateSalt())
                 .AfterMap((src, dest) => dest.LozinkaHash = SaltingHashes.GenerateHash(dest.LozinkaSalt, src.Password));
+
+
+            CreateMap<Model.Database.Narudzba, Model.Models.Narudzba>()
+                .ForMember(dest => dest.NarucenoStavki, opt => opt.MapFrom(src => src.StavkaNarudzbe.Count))
+                .ForMember(dest => dest.ImePrezimeKupca, opt => opt.MapFrom(src => src.Kupac.Ime + " " + src.Kupac.Prezime));
+
+
         }
     }
 }

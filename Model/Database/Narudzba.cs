@@ -10,8 +10,10 @@ namespace Model.Database
         public DateTime Datum { get; set; }
 
 
-        // 1 = Obrada, 2 = Posiljka poslana
+        // 1 = zaprimljeno, 2 = poslano, 3 = zavrseno
         public int Stanje { get; set; }
+
+        
 
         public string KontaktTelefon { get; set; }
         public virtual System.Collections.Generic.List<StavkaNarudzbe> StavkaNarudzbe { get; set; }
@@ -26,9 +28,7 @@ namespace Model.Database
         public string PostanskiBroj { get; set; }
         public string Ulica { get; set; }
 
-
-
-        public int? ZaposlenikId { get; set; }
+     
 
 
     }
