@@ -55,7 +55,7 @@
             this.label17 = new System.Windows.Forms.Label();
             this.comboBoxOperativniSustav = new System.Windows.Forms.ComboBox();
             this.textBoxSlika = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonOdaberiSliku = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.richTextBoxOpis = new System.Windows.Forms.RichTextBox();
             this.richTextBoxKratkiOpis = new System.Windows.Forms.RichTextBox();
@@ -334,15 +334,15 @@
             this.textBoxSlika.Size = new System.Drawing.Size(321, 22);
             this.textBoxSlika.TabIndex = 36;
             // 
-            // button1
+            // buttonOdaberiSliku
             // 
-            this.button1.Location = new System.Drawing.Point(685, 410);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(321, 23);
-            this.button1.TabIndex = 37;
-            this.button1.Text = "Odaberi sliku...";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonOdaberiSliku.Location = new System.Drawing.Point(685, 410);
+            this.buttonOdaberiSliku.Name = "buttonOdaberiSliku";
+            this.buttonOdaberiSliku.Size = new System.Drawing.Size(321, 23);
+            this.buttonOdaberiSliku.TabIndex = 37;
+            this.buttonOdaberiSliku.Text = "Odaberi sliku...";
+            this.buttonOdaberiSliku.UseVisualStyleBackColor = true;
+            this.buttonOdaberiSliku.Click += new System.EventHandler(this.buttonOdaberiSliku_Click);
             // 
             // buttonSave
             // 
@@ -635,7 +635,7 @@
             this.Controls.Add(this.label18);
             this.Controls.Add(this.richTextBoxOpis);
             this.Controls.Add(this.buttonSave);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonOdaberiSliku);
             this.Controls.Add(this.textBoxSlika);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.comboBoxOperativniSustav);
@@ -708,7 +708,7 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.ComboBox comboBoxOperativniSustav;
         private System.Windows.Forms.TextBox textBoxSlika;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonOdaberiSliku;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.RichTextBox richTextBoxOpis;
         private System.Windows.Forms.RichTextBox richTextBoxKratkiOpis;

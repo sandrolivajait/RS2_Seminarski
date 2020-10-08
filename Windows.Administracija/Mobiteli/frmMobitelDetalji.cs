@@ -58,7 +58,8 @@ namespace Windows.Administracija.Mobiteli
                 numericUpDownDijagonalaEkrana.Value = (decimal)entity.DijagonalaEkrana;
                 cboxPopust.Checked = entity.PopustId != null;
                 request.PopustId = entity.PopustId;
-
+                request.Slika = entity.Slika;
+                request.SlikaThumb = entity.SlikaThumb;
                 if (cboxPopust.Checked)
                 {
                     nudPopust.Show();
@@ -194,28 +195,6 @@ namespace Windows.Administracija.Mobiteli
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            var result = openFileDialog1.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                string fileName = openFileDialog1.FileName;
-                var file = File.ReadAllBytes(fileName);
-                request.Slika = file;
-                textBoxSlika.Text = fileName;
-
-                Image image = Image.FromFile(fileName);
-                Image thumb = image.GetThumbnailImage(120, 120, () => false, IntPtr.Zero);
-                thumb.Save(Path.ChangeExtension(fileName, "thumb"));
-
-
-                request.SlikaThumb = ImageToByteArray(thumb);
-
-
-                pictureBoxSlika.Image = thumb;
-            }
-        }
-
         public static byte[] ImageToByteArray(Image x)
         {
             ImageConverter _imageConverter = new ImageConverter();
@@ -274,6 +253,29 @@ namespace Windows.Administracija.Mobiteli
 
             Form.ActiveForm.Close();
 
+        }
+
+        private void buttonOdaberiSliku_Click(object sender, EventArgs e)
+        {
+            var result = openFileDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string fileName = openFileDialog1.FileName;
+                var file = File.ReadAllBytes(fileName);
+
+                request.Slika = file;
+                textBoxSlika.Text = fileName;
+
+                Image image = Image.FromFile(fileName);
+                Image thumb = image.GetThumbnailImage(120, 120, () => false, IntPtr.Zero);
+                thumb.Save(Path.ChangeExtension(fileName, "thumb"));
+
+
+                request.SlikaThumb = ImageToByteArray(thumb);
+
+
+                pictureBoxSlika.Image = thumb;
+            }
         }
     }
 }

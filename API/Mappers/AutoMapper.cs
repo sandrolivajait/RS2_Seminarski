@@ -24,6 +24,22 @@ namespace API.Mappers
                 .ForPath(dest => dest.Popust.DatumOd, opt => opt.MapFrom(src => src.PopustOd))
                 .ForPath(dest => dest.Popust.DatumDo, opt => opt.MapFrom(src => src.PopustDo))
                 .ForPath(dest => dest.Popust.PostotakPopusta, opt => opt.MapFrom(src => (float)src.KolicinaPopusta));
+
+
+            CreateMap<Model.Database.Administrator, Model.Models.Administrator>();
+
+            // create the salts and hash here instead of coding directly.
+            CreateMap<Model.Requests.AdministratorInsertRequest, Model.Database.Administrator>()
+                .BeforeMap((src, dest) => dest.LozinkaSalt = SaltingHashes.GenerateSalt())
+                .AfterMap((src, dest) => dest.LozinkaHash = SaltingHashes.GenerateHash(dest.LozinkaSalt, src.Password));
+
+            CreateMap<Model.Database.Kupac, Model.Models.Kupac>()
+                .ForMember(dest => dest.Grad, opt => opt.MapFrom(src => src.Grad.Naziv));
+
+            // create the salts and hash here instead of coding directly.
+            CreateMap<Model.Requests.KupacInsertRequest, Model.Database.Kupac>()
+                .BeforeMap((src, dest) => dest.LozinkaSalt = SaltingHashes.GenerateSalt())
+                .AfterMap((src, dest) => dest.LozinkaHash = SaltingHashes.GenerateHash(dest.LozinkaSalt, src.Password));
         }
     }
 }

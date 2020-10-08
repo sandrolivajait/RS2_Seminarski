@@ -7,9 +7,11 @@ namespace Model.Database
 	{
 
 		public string Email { get; set; }
-		public bool IsSuperAdmin { get; set; }
 		public string Ime { get; set; }
 		public string Prezime { get; set; }
+
+		public string LozinkaHash { get; set; }
+		public string LozinkaSalt { get; set; }
 
 	}
 }

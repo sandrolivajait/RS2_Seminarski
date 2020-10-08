@@ -10,7 +10,8 @@ namespace RepositoryLayer
     {
         public static void Make(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Administrator>().HasData(new Administrator { Id = 1, Email = "admin@admin.com", Ime = "admin", IsSuperAdmin = true, Prezime = "admin" });
+            //Password123!.
+            modelBuilder.Entity<Administrator>().HasData(new Administrator { Id = 1, Email = "admin@admin.com", Ime = "admin", Prezime = "admin", LozinkaHash = "NImQS18rkBZDPyanRdPitQ4LRF4=", LozinkaSalt = "OM4df9qc3pJdXZbuJMDxfQ==" });
 
             
             modelBuilder.Entity<Zupanija>().HasData(new Zupanija { Id = 1, Naziv = "Hercegovacko-Neretvanska" }, new Zupanija { Id = 2, Naziv = "Zapadno-Hercegovacka" });
@@ -356,7 +357,7 @@ namespace RepositoryLayer
             }
 
             ); ;
-            modelBuilder.Entity<Komentar>().HasData(new Komentar { Id = 1, Datum = DateTime.Now, IsDeleted = false, KupacId = 1, MobitelId = 1 });
+        
             //modelBuilder.Entity<Slika>().HasData(
             //    new Slika { 
             //        Id = 1,

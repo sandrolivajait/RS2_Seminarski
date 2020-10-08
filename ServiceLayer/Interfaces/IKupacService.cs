@@ -1,16 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Model.Database;
+using Model.Models;
+using Model.Requests;
 
 namespace ServiceLayer.Interfaces
 {
     public interface IKupacService
     {
-        IEnumerable<Kupac> GetKupci();
-        Kupac GetKupac(int id);
+        
+        public Kupac GetKupac(int id);
 
-        void InsertKupac(Kupac kupac);
+        public void InsertKupac(KupacInsertRequest kupac);
+
+        public IEnumerable<Kupac> GetAll();
+
+        public void Update(int id, KupacInsertRequest request);
+
+       
 
     }
 }

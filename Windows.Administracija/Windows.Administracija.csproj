@@ -62,7 +62,38 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administratori\frmAdministratorDetalj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administratori\frmAdministratorDetalj.Designer.cs">
+      <DependentUpon>frmAdministratorDetalj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administratori\frmAdministratori.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administratori\frmAdministratori.Designer.cs">
+      <DependentUpon>frmAdministratori.cs</DependentUpon>
+    </Compile>
     <Compile Include="APIService.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="Kupci\frmKupciDetalj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Kupci\frmKupciDetalj.Designer.cs">
+      <DependentUpon>frmKupciDetalj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Kupci\frmKupci.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Kupci\frmKupci.Designer.cs">
+      <DependentUpon>frmKupci.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Mobiteli\frmMobitelDetalji.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +114,21 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Administratori\frmAdministratorDetalj.resx">
+      <DependentUpon>frmAdministratorDetalj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administratori\frmAdministratori.resx">
+      <DependentUpon>frmAdministratori.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Kupci\frmKupciDetalj.resx">
+      <DependentUpon>frmKupciDetalj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Kupci\frmKupci.resx">
+      <DependentUpon>frmKupci.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mobiteli\frmMobitelDetalji.resx">
       <DependentUpon>frmMobitelDetalji.cs</DependentUpon>
     </EmbeddedResource>
@@ -122,5 +168,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\background1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -25,7 +25,7 @@ namespace Model.Database
 		public byte[] SlikaThumb { get; set; }
 
 		public virtual System.Collections.Generic.List<StavkaNarudzbe> StavkaNarudzbe { get; set; }
-		public virtual System.Collections.Generic.List<Komentar> Komentar { get; set; }
+	
 
 		public int? ProizvodjacId { get; set; }
 		public virtual Proizvodjac Prozivodjac { get; set; }

@@ -16,7 +16,6 @@ namespace RepositoryLayer
         public DbSet<Administrator> Administratori { get; set; }
         public DbSet<BannedKupac> BannedKupci { get; set; }
         public DbSet<Grad> Gradovi { get; set; }
-        public DbSet<Komentar> Komentari { get; set; }
         public DbSet<Kupac> Kupci { get; set; }
         public DbSet<Log> Log { get; set; }
         public DbSet<Mobiteli> Mobiteli { get; set; }

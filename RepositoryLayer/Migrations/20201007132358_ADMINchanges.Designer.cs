@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RepositoryLayer;
 
 namespace RepositoryLayer.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20201007132358_ADMINchanges")]
+    partial class ADMINchanges
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,8 +53,8 @@ namespace RepositoryLayer.Migrations
                             Id = 1,
                             Email = "admin@admin.com",
                             Ime = "admin",
-                            LozinkaHash = "NImQS18rkBZDPyanRdPitQ4LRF4=",
-                            LozinkaSalt = "OM4df9qc3pJdXZbuJMDxfQ==",
+                            LozinkaHash = "",
+                            LozinkaSalt = "",
                             Prezime = "admin"
                         });
                 });
@@ -117,6 +119,47 @@ namespace RepositoryLayer.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Model.Database.Komentar", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Datum")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("KupacId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MobitelId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Sadrzaj")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("KupacId");
+
+                    b.HasIndex("MobitelId");
+
+                    b.ToTable("Komentari");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Datum = new DateTime(2020, 10, 7, 15, 23, 57, 651, DateTimeKind.Local).AddTicks(1504),
+                            IsDeleted = false,
+                            KupacId = 1,
+                            MobitelId = 1
+                        });
+                });
+
             modelBuilder.Entity("Model.Database.Kupac", b =>
                 {
                     b.Property<int>("Id")
@@ -168,7 +211,7 @@ namespace RepositoryLayer.Migrations
                             Id = 1,
                             BrojMobitela = "063525555",
                             BrojPokusaja = 0,
-                            DatumPokusaja = new DateTime(2020, 10, 8, 20, 30, 50, 569, DateTimeKind.Local).AddTicks(6135),
+                            DatumPokusaja = new DateTime(2020, 10, 7, 15, 23, 57, 651, DateTimeKind.Local).AddTicks(6000),
                             Email = "kupac@kupac.com",
                             GradId = 1,
                             Ime = "kupac",
@@ -743,8 +786,8 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 1,
-                            DatumDo = new DateTime(2020, 10, 8, 20, 30, 50, 568, DateTimeKind.Local).AddTicks(3728),
-                            DatumOd = new DateTime(2020, 10, 8, 20, 30, 50, 565, DateTimeKind.Local).AddTicks(9129),
+                            DatumDo = new DateTime(2020, 10, 7, 15, 23, 57, 650, DateTimeKind.Local).AddTicks(857),
+                            DatumOd = new DateTime(2020, 10, 7, 15, 23, 57, 647, DateTimeKind.Local).AddTicks(5364),
                             PostotakPopusta = 0.1f
                         });
                 });
@@ -891,9 +934,24 @@ namespace RepositoryLayer.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Model.Database.Komentar", b =>
+                {
+                    b.HasOne("Model.Database.Kupac", "Kupac")
+                        .WithMany("Komentar")
+                        .HasForeignKey("KupacId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Model.Database.Mobiteli", "Mobitel")
+                        .WithMany("Komentar")
+                        .HasForeignKey("MobitelId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Model.Database.Kupac", b =>
                 {
-                    b.HasOne("Model.Database.BannedKupac", null)
+                    b.HasOne("Model.Database.BannedKupac", "BannedKupac")
                         .WithMany("Kupac")
                         .HasForeignKey("BannedKupacId")
                         .OnDelete(DeleteBehavior.Restrict);

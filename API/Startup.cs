@@ -49,15 +49,16 @@ namespace API
 
             //register services
             services.AddTransient<IMobitelService, MobitelService>();
+            services.AddTransient<IAuthService, AuthService>();
             services.AddTransient<IGradoviService, GradoviService>();
             services.AddTransient<IKupacService, KupacService>();
-            services.AddTransient<IKomentarService, KomentarService>();
             services.AddTransient<INarudzbaService, NarudzbaService>();
             services.AddTransient<IProizvodjacService, ProizvodjacService>();
             services.AddTransient<ILogService, LogService>();
             services.AddTransient<ISmsService, SmsService>();
             services.AddTransient<IEmailService, EmailService>();
             services.AddTransient<IOperativniSustaviService, OperativniSustavService>();
+            services.AddTransient<IAdministratorService, AdministratorService>();
 
             // add our mail settings
             services.Configure<MailSettings>(Configuration.GetSection("MailSettings"));
