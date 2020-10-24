@@ -12,7 +12,7 @@ namespace Windows.Administracija.Administratori
 {
     public partial class frmNarudzbe : Form
     {
-        private readonly APIService narudzbe = new APIService("Narudzbe");
+        private readonly APIService narudzbe = new APIService("Narudzba");
         public frmNarudzbe()
         {
             InitializeComponent();
@@ -29,13 +29,13 @@ namespace Windows.Administracija.Administratori
 
         private async void frmNarudzbe_Load(object sender, EventArgs e)
         {
-            dataGridViewZavrsene.AutoGenerateColumns = true;
-            dataGridViewNezavrsene.AutoGenerateColumns = true;
+            dataGridViewZavrsene.AutoGenerateColumns = false;
+            dataGridViewNezavrsene.AutoGenerateColumns = false;
 
             var result = await narudzbe.Get<List<Model.Models.Narudzba>>(null);
 
-            dataGridViewZavrsene.DataSource = result.Where(x => x.Stanje == 5);
-            dataGridViewNezavrsene.DataSource = result.Where(x => x.Stanje != 5);
+            dataGridViewZavrsene.DataSource = result.Where(x => x.Stanje == 5).ToList();
+            dataGridViewNezavrsene.DataSource = result.Where(x => x.Stanje != 5).ToList();
         }
     }
 }

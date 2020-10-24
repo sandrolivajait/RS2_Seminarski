@@ -17,13 +17,13 @@ namespace Windows.Administracija
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new StartForm());
+            Application.Run(new StartForm());
 
-            LoginForm login = new LoginForm();
-            if(login.ShowDialog() == DialogResult.OK)
-            {
-                Application.Run(new StartForm());
-            }
+            //LoginForm login = new LoginForm();
+            //if(login.ShowDialog() == DialogResult.OK)
+            //{
+            //    Application.Run(new StartForm());
+            //}
             
 
         }
