@@ -36,10 +36,15 @@ namespace API.Mappers
             CreateMap<Model.Database.Kupac, Model.Models.Kupac>()
                 .ForMember(dest => dest.Grad, opt => opt.MapFrom(src => src.Grad.Naziv));
 
+            CreateMap<Model.Database.Kvar, Model.Models.Kvar>()
+                .ForMember(dest => dest.ImeKupca, opt => opt.MapFrom(src => src.Kupac.Ime + " " + src.Kupac.Prezime));
+
             // create the salts and hash here instead of coding directly.
             CreateMap<Model.Requests.KupacInsertRequest, Model.Database.Kupac>()
                 .BeforeMap((src, dest) => dest.LozinkaSalt = SaltingHashes.GenerateSalt())
                 .AfterMap((src, dest) => dest.LozinkaHash = SaltingHashes.GenerateHash(dest.LozinkaSalt, src.Password));
+
+            CreateMap<Model.Requests.KvarInsertRequest, Model.Database.Kvar>();
 
 
             CreateMap<Model.Database.Narudzba, Model.Models.Narudzba>()

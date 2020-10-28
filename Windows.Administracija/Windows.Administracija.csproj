@@ -177,7 +177,10 @@
       <Name>Model</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Kvarovi\" />
+    <Folder Include="Reporti\" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\background1.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
