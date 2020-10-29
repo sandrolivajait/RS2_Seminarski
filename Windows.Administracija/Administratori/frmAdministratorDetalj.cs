@@ -105,6 +105,7 @@ namespace Windows.Administracija.Administratori
                 textBoxEmail.Text = entity.Email;
                 textBoxIme.Text = entity.Ime;
                 textBoxPrezime.Text = entity.Prezime;
+                
               
 
             }

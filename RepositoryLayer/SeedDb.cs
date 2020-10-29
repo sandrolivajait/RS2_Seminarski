@@ -21,6 +21,15 @@ namespace RepositoryLayer
             , new Proizvodjac { Id = 4, Naziv = "Xiaomi" }, new Proizvodjac { Id = 5, Naziv = "Nokia" }, new Proizvodjac { Id = 6, Naziv = "Google" }, new Proizvodjac { Id = 7, Naziv = "CAT" }, new Proizvodjac { Id = 8, Naziv = "YEZZ" });
             modelBuilder.Entity<OperativniSustav>().HasData(new OperativniSustav { Id = 1, Verzija = 11f, Naziv = "Android" }, new OperativniSustav { Id = 2, Verzija = 13.4f, Naziv = "iOS" });
 
+            // ,, mobitel popravljen, mobitel vraćen korisniku
+            modelBuilder.Entity<StanjeKvara>().HasData(new StanjeKvara { Id = 1, Opis = "zahtjev poslan" },
+                new StanjeKvara { Id = 2, Opis = "mobitel zaprimljen" },
+                new StanjeKvara { Id = 3, Opis = "mobitel popravljen" },
+                new StanjeKvara { Id = 4, Opis = "mobitel vracen korisniku" });
+
+
+
+
             modelBuilder.Entity<Popusti>().HasData(new Popusti { DatumOd = DateTime.Now, DatumDo = DateTime.Now, Id = 1, PostotakPopusta = 0.10f });
 
             modelBuilder.Entity<Mobiteli>().HasData(new Mobiteli
@@ -456,16 +465,17 @@ namespace RepositoryLayer
 
 
             modelBuilder.Entity<Kupac>().HasData(new Kupac { Id = 1, Email = "kupac@kupac.com", BrojMobitela = "063525555", Ime = "kupac", Prezime = "kupic", BrojPokusaja = 0, DatumPokusaja = DateTime.Now, GradId = 1 });
-           
-            //modelBuilder.Entity<Narudzba>().HasData();
-           
 
-            
-            
-          
+            modelBuilder.Entity<Kvar>().HasData(new Kvar { Id = 1, OpisKvara = "otisao mu displej, ispao mi na beton.", KupacId = 1, BrojMobitela = "063513758", DatumKvara = DateTime.UtcNow, StanjeKvaraId = 1, NazivMobitela = "iPhone 10 XR" });
+            //modelBuilder.Entity<Narudzba>().HasData();
+
+
+
+
+
             //modelBuilder.Entity<StavkaNarudzbe>().HasData();
-           
-           
+
+
 
             //modelBuilder.Entity<BannedKupac>().HasData();
             //modelBuilder.Entity<Log>().HasData();

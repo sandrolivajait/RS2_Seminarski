@@ -88,6 +88,18 @@
     <Compile Include="Kupci\frmKupci.Designer.cs">
       <DependentUpon>frmKupci.cs</DependentUpon>
     </Compile>
+    <Compile Include="Kvarovi\frmKvarovi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Kvarovi\frmKvarovi.Designer.cs">
+      <DependentUpon>frmKvarovi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Kvarovi\frmKvaroviDetalj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Kvarovi\frmKvaroviDetalj.Designer.cs">
+      <DependentUpon>frmKvaroviDetalj.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +144,12 @@
     <EmbeddedResource Include="Kupci\frmKupci.resx">
       <DependentUpon>frmKupci.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Kvarovi\frmKvarovi.resx">
+      <DependentUpon>frmKvarovi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Kvarovi\frmKvaroviDetalj.resx">
+      <DependentUpon>frmKvaroviDetalj.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -157,6 +175,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Model.Models.Kvar.datasource" />
     <None Include="Properties\DataSources\Model.Models.Narudzba.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -178,7 +197,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Kvarovi\" />
     <Folder Include="Reporti\" />
   </ItemGroup>
   <ItemGroup>

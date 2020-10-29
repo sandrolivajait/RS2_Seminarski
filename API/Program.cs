@@ -92,6 +92,8 @@ namespace API
             };
             ctx.StavkeNarudzbe.Add(stavka1);
             ctx.SaveChanges();
+
+           
         }
     }
 }
