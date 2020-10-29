@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Windows.Administracija.Administratori;
+using Windows.Administracija.Kvarovi;
 using Windows.Administracija.Mobiteli;
 
 namespace Windows.Administracija
@@ -65,6 +66,13 @@ namespace Windows.Administracija
         private void pretragaToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             frmNarudzbe frm = new frmNarudzbe();
+
+            frm.Show();
+        }
+
+        private void pretragaToolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            frmKvarovi frm = new frmKvarovi();
 
             frm.Show();
         }

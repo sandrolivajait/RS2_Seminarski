@@ -12,7 +12,7 @@ namespace Model.Models
 
         
         public int StanjeKvaraId { get; set; }
-
+        public string StanjeKvara { get; set; }
         public string NazivMobitela { get; set; }
         public string BrojMobitela { get; set; }
 

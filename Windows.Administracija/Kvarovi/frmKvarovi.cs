@@ -20,13 +20,7 @@ namespace Windows.Administracija.Kvarovi
 
         
 
-        private void dataGridViewKvarovi_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            var kvarid = dataGridViewKvarovi.Rows[e.RowIndex].Cells[0].Value;
-
-            frmKvaroviDetalj frm = new frmKvaroviDetalj(int.Parse(kvarid.ToString()));
-            frm.Show();
-        }
+       
 
         private async void frmKvarovi_Load(object sender, EventArgs e)
         {
@@ -34,6 +28,14 @@ namespace Windows.Administracija.Kvarovi
             var result = await kvarovi.Get<List<Model.Models.Kvar>>(null);
 
             dataGridViewKvarovi.DataSource = result;
+        }
+
+        private void dataGridViewKvarovi_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            var kvarid = dataGridViewKvarovi.Rows[e.RowIndex].Cells[0].Value;
+
+            frmKvaroviDetalj frm = new frmKvaroviDetalj(int.Parse(kvarid.ToString()));
+            frm.Show();
         }
     }
 }

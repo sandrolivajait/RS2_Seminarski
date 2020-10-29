@@ -168,7 +168,7 @@ namespace RepositoryLayer.Migrations
                             Id = 1,
                             BrojMobitela = "063525555",
                             BrojPokusaja = 0,
-                            DatumPokusaja = new DateTime(2020, 10, 29, 10, 42, 12, 307, DateTimeKind.Local).AddTicks(8426),
+                            DatumPokusaja = new DateTime(2020, 10, 29, 11, 9, 15, 426, DateTimeKind.Local).AddTicks(2405),
                             Email = "kupac@kupac.com",
                             GradId = 1,
                             Ime = "kupac",
@@ -214,7 +214,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 1,
                             BrojMobitela = "063513758",
-                            DatumKvara = new DateTime(2020, 10, 29, 7, 42, 12, 308, DateTimeKind.Utc).AddTicks(1048),
+                            DatumKvara = new DateTime(2020, 10, 29, 8, 9, 15, 426, DateTimeKind.Utc).AddTicks(5192),
                             KupacId = 1,
                             NazivMobitela = "iPhone 10 XR",
                             OpisKvara = "otisao mu displej, ispao mi na beton.",
@@ -786,8 +786,8 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 1,
-                            DatumDo = new DateTime(2020, 10, 29, 10, 42, 12, 306, DateTimeKind.Local).AddTicks(4268),
-                            DatumOd = new DateTime(2020, 10, 29, 10, 42, 12, 305, DateTimeKind.Local).AddTicks(2105),
+                            DatumDo = new DateTime(2020, 10, 29, 11, 9, 15, 424, DateTimeKind.Local).AddTicks(9494),
+                            DatumOd = new DateTime(2020, 10, 29, 11, 9, 15, 423, DateTimeKind.Local).AddTicks(8116),
                             PostotakPopusta = 0.1f
                         });
                 });
@@ -993,7 +993,7 @@ namespace RepositoryLayer.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Model.Database.Kvar", "StanjeKvara")
+                    b.HasOne("Model.Database.StanjeKvara", "StanjeKvara")
                         .WithMany()
                         .HasForeignKey("StanjeKvaraId")
                         .OnDelete(DeleteBehavior.Restrict)

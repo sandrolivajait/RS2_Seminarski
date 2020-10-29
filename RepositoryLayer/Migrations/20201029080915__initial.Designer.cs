@@ -10,8 +10,8 @@ using RepositoryLayer;
 namespace RepositoryLayer.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20200923021935_initial")]
-    partial class initial
+    [Migration("20201029080915__initial")]
+    partial class _initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace RepositoryLayer.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Model.Models.Administrator", b =>
+            modelBuilder.Entity("Model.Database.Administrator", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -34,8 +34,11 @@ namespace RepositoryLayer.Migrations
                     b.Property<string>("Ime")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsSuperAdmin")
-                        .HasColumnType("bit");
+                    b.Property<string>("LozinkaHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LozinkaSalt")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Prezime")
                         .HasColumnType("nvarchar(max)");
@@ -50,12 +53,13 @@ namespace RepositoryLayer.Migrations
                             Id = 1,
                             Email = "admin@admin.com",
                             Ime = "admin",
-                            IsSuperAdmin = true,
+                            LozinkaHash = "NImQS18rkBZDPyanRdPitQ4LRF4=",
+                            LozinkaSalt = "OM4df9qc3pJdXZbuJMDxfQ==",
                             Prezime = "admin"
                         });
                 });
 
-            modelBuilder.Entity("Model.Models.BannedKupac", b =>
+            modelBuilder.Entity("Model.Database.BannedKupac", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -76,7 +80,7 @@ namespace RepositoryLayer.Migrations
                     b.ToTable("BannedKupci");
                 });
 
-            modelBuilder.Entity("Model.Models.Grad", b =>
+            modelBuilder.Entity("Model.Database.Grad", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -115,48 +119,7 @@ namespace RepositoryLayer.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Model.Models.Komentar", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("Datum")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("KupacId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MobitelId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Sadrzaj")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("KupacId");
-
-                    b.HasIndex("MobitelId");
-
-                    b.ToTable("Komentari");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Datum = new DateTime(2020, 9, 23, 4, 19, 35, 117, DateTimeKind.Local).AddTicks(9652),
-                            IsDeleted = false,
-                            KupacId = 1,
-                            MobitelId = 1
-                        });
-                });
-
-            modelBuilder.Entity("Model.Models.Kupac", b =>
+            modelBuilder.Entity("Model.Database.Kupac", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -184,6 +147,12 @@ namespace RepositoryLayer.Migrations
                     b.Property<string>("Ime")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("LozinkaHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LozinkaSalt")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Prezime")
                         .HasColumnType("nvarchar(max)");
 
@@ -201,7 +170,7 @@ namespace RepositoryLayer.Migrations
                             Id = 1,
                             BrojMobitela = "063525555",
                             BrojPokusaja = 0,
-                            DatumPokusaja = new DateTime(2020, 9, 23, 4, 19, 35, 118, DateTimeKind.Local).AddTicks(3930),
+                            DatumPokusaja = new DateTime(2020, 10, 29, 11, 9, 15, 426, DateTimeKind.Local).AddTicks(2405),
                             Email = "kupac@kupac.com",
                             GradId = 1,
                             Ime = "kupac",
@@ -209,7 +178,53 @@ namespace RepositoryLayer.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Model.Models.Log", b =>
+            modelBuilder.Entity("Model.Database.Kvar", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("BrojMobitela")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DatumKvara")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("KupacId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("NazivMobitela")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OpisKvara")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("StanjeKvaraId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("KupacId");
+
+                    b.HasIndex("StanjeKvaraId");
+
+                    b.ToTable("Kvarovi");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            BrojMobitela = "063513758",
+                            DatumKvara = new DateTime(2020, 10, 29, 8, 9, 15, 426, DateTimeKind.Utc).AddTicks(5192),
+                            KupacId = 1,
+                            NazivMobitela = "iPhone 10 XR",
+                            OpisKvara = "otisao mu displej, ispao mi na beton.",
+                            StanjeKvaraId = 1
+                        });
+                });
+
+            modelBuilder.Entity("Model.Database.Log", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -251,7 +266,7 @@ namespace RepositoryLayer.Migrations
                     b.ToTable("Log");
                 });
 
-            modelBuilder.Entity("Model.Models.Mobiteli", b =>
+            modelBuilder.Entity("Model.Database.Mobiteli", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -308,6 +323,12 @@ namespace RepositoryLayer.Migrations
 
                     b.Property<string>("Rezolucija")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("SlikaFull")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<byte[]>("SlikaThumb")
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<int>("StanjeNaSkladistu")
                         .HasColumnType("int");
@@ -665,7 +686,7 @@ namespace RepositoryLayer.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Model.Models.Narudzba", b =>
+            modelBuilder.Entity("Model.Database.Narudzba", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -702,9 +723,6 @@ namespace RepositoryLayer.Migrations
                     b.Property<string>("Ulica")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ZaposlenikId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("GradId");
@@ -714,7 +732,7 @@ namespace RepositoryLayer.Migrations
                     b.ToTable("Narudzbe");
                 });
 
-            modelBuilder.Entity("Model.Models.OperativniSustav", b =>
+            modelBuilder.Entity("Model.Database.OperativniSustav", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -746,7 +764,7 @@ namespace RepositoryLayer.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Model.Models.Popusti", b =>
+            modelBuilder.Entity("Model.Database.Popusti", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -770,13 +788,13 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 1,
-                            DatumDo = new DateTime(2020, 9, 23, 4, 19, 35, 116, DateTimeKind.Local).AddTicks(9684),
-                            DatumOd = new DateTime(2020, 9, 23, 4, 19, 35, 114, DateTimeKind.Local).AddTicks(4229),
+                            DatumDo = new DateTime(2020, 10, 29, 11, 9, 15, 424, DateTimeKind.Local).AddTicks(9494),
+                            DatumOd = new DateTime(2020, 10, 29, 11, 9, 15, 423, DateTimeKind.Local).AddTicks(8116),
                             PostotakPopusta = 0.1f
                         });
                 });
 
-            modelBuilder.Entity("Model.Models.Proizvodjac", b =>
+            modelBuilder.Entity("Model.Database.Proizvodjac", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -833,33 +851,7 @@ namespace RepositoryLayer.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Model.Models.Slika", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("MobitelId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Order")
-                        .HasColumnType("int");
-
-                    b.Property<byte[]>("SlikaFull")
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<byte[]>("SlikaThumb")
-                        .HasColumnType("varbinary(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MobitelId");
-
-                    b.ToTable("Slike");
-                });
-
-            modelBuilder.Entity("Model.Models.SmsLog", b =>
+            modelBuilder.Entity("Model.Database.SmsLog", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -880,7 +872,44 @@ namespace RepositoryLayer.Migrations
                     b.ToTable("SmsLog");
                 });
 
-            modelBuilder.Entity("Model.Models.StavkaNarudzbe", b =>
+            modelBuilder.Entity("Model.Database.StanjeKvara", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Opis")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("StanjeKvara");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Opis = "zahtjev poslan"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Opis = "mobitel zaprimljen"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Opis = "mobitel popravljen"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Opis = "mobitel vracen korisniku"
+                        });
+                });
+
+            modelBuilder.Entity("Model.Database.StavkaNarudzbe", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -908,7 +937,7 @@ namespace RepositoryLayer.Migrations
                     b.ToTable("StavkeNarudzbe");
                 });
 
-            modelBuilder.Entity("Model.Models.Zupanija", b =>
+            modelBuilder.Entity("Model.Database.Zupanija", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -935,94 +964,85 @@ namespace RepositoryLayer.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Model.Models.Grad", b =>
+            modelBuilder.Entity("Model.Database.Grad", b =>
                 {
-                    b.HasOne("Model.Models.Zupanija", "Zupanija")
+                    b.HasOne("Model.Database.Zupanija", "Zupanija")
                         .WithMany("Grad")
                         .HasForeignKey("ZupanijaId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Model.Models.Komentar", b =>
+            modelBuilder.Entity("Model.Database.Kupac", b =>
                 {
-                    b.HasOne("Model.Models.Kupac", "Kupac")
-                        .WithMany("Komentar")
-                        .HasForeignKey("KupacId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Model.Models.Mobiteli", "Mobitel")
-                        .WithMany("Komentar")
-                        .HasForeignKey("MobitelId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Model.Models.Kupac", b =>
-                {
-                    b.HasOne("Model.Models.BannedKupac", "BannedKupac")
+                    b.HasOne("Model.Database.BannedKupac", null)
                         .WithMany("Kupac")
                         .HasForeignKey("BannedKupacId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("Model.Models.Grad", "Grad")
+                    b.HasOne("Model.Database.Grad", "Grad")
                         .WithMany("Kupac")
                         .HasForeignKey("GradId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Model.Models.Mobiteli", b =>
+            modelBuilder.Entity("Model.Database.Kvar", b =>
                 {
-                    b.HasOne("Model.Models.OperativniSustav", "OperativniSustav")
+                    b.HasOne("Model.Database.Kupac", "Kupac")
+                        .WithMany()
+                        .HasForeignKey("KupacId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Model.Database.StanjeKvara", "StanjeKvara")
+                        .WithMany()
+                        .HasForeignKey("StanjeKvaraId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Model.Database.Mobiteli", b =>
+                {
+                    b.HasOne("Model.Database.OperativniSustav", "OperativniSustav")
                         .WithMany("Mobiteli")
                         .HasForeignKey("OperativniSustavId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("Model.Models.Popusti", "Popust")
+                    b.HasOne("Model.Database.Popusti", "Popust")
                         .WithMany()
                         .HasForeignKey("PopustId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("Model.Models.Proizvodjac", "Prozivodjac")
+                    b.HasOne("Model.Database.Proizvodjac", "Prozivodjac")
                         .WithMany("Mobiteli")
                         .HasForeignKey("ProizvodjacId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
-            modelBuilder.Entity("Model.Models.Narudzba", b =>
+            modelBuilder.Entity("Model.Database.Narudzba", b =>
                 {
-                    b.HasOne("Model.Models.Grad", null)
+                    b.HasOne("Model.Database.Grad", null)
                         .WithMany("Narudzba")
                         .HasForeignKey("GradId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("Model.Models.Kupac", "Kupac")
+                    b.HasOne("Model.Database.Kupac", "Kupac")
                         .WithMany("Narudzba")
                         .HasForeignKey("KupacId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Model.Models.Slika", b =>
+            modelBuilder.Entity("Model.Database.StavkaNarudzbe", b =>
                 {
-                    b.HasOne("Model.Models.Mobiteli", "Mobitel")
-                        .WithMany("Slika")
-                        .HasForeignKey("MobitelId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Model.Models.StavkaNarudzbe", b =>
-                {
-                    b.HasOne("Model.Models.Mobiteli", "Mobitel")
+                    b.HasOne("Model.Database.Mobiteli", "Mobitel")
                         .WithMany("StavkaNarudzbe")
                         .HasForeignKey("MobitelId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Model.Models.Narudzba", "Narudzba")
+                    b.HasOne("Model.Database.Narudzba", "Narudzba")
                         .WithMany("StavkaNarudzbe")
                         .HasForeignKey("NarudzbaId")
                         .OnDelete(DeleteBehavior.Restrict)

@@ -37,7 +37,10 @@ namespace API.Mappers
                 .ForMember(dest => dest.Grad, opt => opt.MapFrom(src => src.Grad.Naziv));
 
             CreateMap<Model.Database.Kvar, Model.Models.Kvar>()
-                .ForMember(dest => dest.ImeKupca, opt => opt.MapFrom(src => src.Kupac.Ime + " " + src.Kupac.Prezime));
+                .ForMember(dest => dest.ImeKupca, opt => opt.MapFrom(src => src.Kupac.Ime + " " + src.Kupac.Prezime))
+                .ForMember(dest => dest.StanjeKvara, opt => opt.MapFrom(src => src.StanjeKvara.Opis));
+
+            CreateMap<Model.Requests.KvarInsertRequest, Model.Database.Kvar>();
 
             // create the salts and hash here instead of coding directly.
             CreateMap<Model.Requests.KupacInsertRequest, Model.Database.Kupac>()

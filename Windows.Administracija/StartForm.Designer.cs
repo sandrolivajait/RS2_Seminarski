@@ -42,6 +42,7 @@
             this.pretragaToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.dodavanjeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.kvaroviToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pretragaToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -118,7 +119,7 @@
             // pretragaToolStripMenuItem2
             // 
             this.pretragaToolStripMenuItem2.Name = "pretragaToolStripMenuItem2";
-            this.pretragaToolStripMenuItem2.Size = new System.Drawing.Size(224, 26);
+            this.pretragaToolStripMenuItem2.Size = new System.Drawing.Size(148, 26);
             this.pretragaToolStripMenuItem2.Text = "Pretraga";
             this.pretragaToolStripMenuItem2.Click += new System.EventHandler(this.pretragaToolStripMenuItem2_Click);
             // 
@@ -153,9 +154,18 @@
             // 
             // kvaroviToolStripMenuItem
             // 
+            this.kvaroviToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pretragaToolStripMenuItem4});
             this.kvaroviToolStripMenuItem.Name = "kvaroviToolStripMenuItem";
             this.kvaroviToolStripMenuItem.Size = new System.Drawing.Size(71, 24);
             this.kvaroviToolStripMenuItem.Text = "Kvarovi";
+            // 
+            // pretragaToolStripMenuItem4
+            // 
+            this.pretragaToolStripMenuItem4.Name = "pretragaToolStripMenuItem4";
+            this.pretragaToolStripMenuItem4.Size = new System.Drawing.Size(224, 26);
+            this.pretragaToolStripMenuItem4.Text = "Pretraga";
+            this.pretragaToolStripMenuItem4.Click += new System.EventHandler(this.pretragaToolStripMenuItem4_Click);
             // 
             // StartForm
             // 
@@ -189,6 +199,7 @@
         private System.Windows.Forms.ToolStripMenuItem dodavanjeToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem dodavanjeToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem kvaroviToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pretragaToolStripMenuItem4;
     }
 }
 

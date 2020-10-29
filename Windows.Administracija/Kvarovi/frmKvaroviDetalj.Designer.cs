@@ -40,6 +40,7 @@
             this.textBoxNazivMobitela = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.textBoxImeKupca = new System.Windows.Forms.TextBox();
+            this.buttonSacuvaj = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBoxDatum
@@ -145,11 +146,22 @@
             this.textBoxImeKupca.Size = new System.Drawing.Size(406, 22);
             this.textBoxImeKupca.TabIndex = 10;
             // 
+            // buttonSacuvaj
+            // 
+            this.buttonSacuvaj.Location = new System.Drawing.Point(489, 427);
+            this.buttonSacuvaj.Name = "buttonSacuvaj";
+            this.buttonSacuvaj.Size = new System.Drawing.Size(75, 23);
+            this.buttonSacuvaj.TabIndex = 12;
+            this.buttonSacuvaj.Text = "Spremi";
+            this.buttonSacuvaj.UseVisualStyleBackColor = true;
+            this.buttonSacuvaj.Click += new System.EventHandler(this.buttonSacuvaj_Click);
+            // 
             // frmKvaroviDetalj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(682, 443);
+            this.ClientSize = new System.Drawing.Size(686, 477);
+            this.Controls.Add(this.buttonSacuvaj);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.textBoxImeKupca);
             this.Controls.Add(this.label5);
@@ -184,5 +196,6 @@
         private System.Windows.Forms.TextBox textBoxNazivMobitela;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBoxImeKupca;
+        private System.Windows.Forms.Button buttonSacuvaj;
     }
 }

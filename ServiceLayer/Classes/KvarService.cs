@@ -18,21 +18,22 @@ namespace ServiceLayer.Classes
         private readonly IRepository<Model.Database.StanjeKvara> stanjeKvaraRepository;
         private readonly IMapper mapper;
 
-        public KvarService(IRepository<Model.Database.Kvar> kvarRepository,  IMapper mapper)
+        public KvarService(IRepository<Model.Database.Kvar> kvarRepository, IRepository<Model.Database.StanjeKvara> stanjeKvaraRepository,  IMapper mapper)
         {
             this.kvarRepository = kvarRepository;
+            this.stanjeKvaraRepository = stanjeKvaraRepository;
             this.mapper = mapper;
         }
 
         public IEnumerable<Model.Models.Kvar> Get()
         {
-            return mapper.Map<IEnumerable<Model.Database.Kvar>, IEnumerable<Model.Models.Kvar>>(kvarRepository.GetAllQueryable().Include(x => x.Kupac).ToList());
+            return mapper.Map<IEnumerable<Model.Database.Kvar>, IEnumerable<Model.Models.Kvar>>(kvarRepository.GetAllQueryable().Include(x => x.Kupac).Include(x => x.StanjeKvara).OrderByDescending(x => x.DatumKvara).ToList());
 
         }
 
         public IEnumerable<Model.Database.StanjeKvara> GetStanjaKvara()
         {
-            return stanjeKvaraRepository.GetAll();
+            return stanjeKvaraRepository.GetAll().OrderBy(x => x.Id).ToList();
         }
 
         public Model.Models.Kvar Get(int id)

@@ -11,7 +11,7 @@ namespace Model.Database
 
         // zahtjev poslan, mobitel zaprimljen, mobitel popravljen, mobitel vraćen korisniku
         public int StanjeKvaraId { get; set; }
-        public virtual Kvar StanjeKvara { get; set; }
+        public virtual StanjeKvara StanjeKvara { get; set; }
 
         public string BrojMobitela { get; set; }
 
