@@ -15,23 +15,30 @@ namespace ServiceLayer.Classes
     {
         private readonly IRepository<Model.Database.Narudzba> naruzbaRepository;
         private readonly IRepository<Model.Database.StavkaNarudzbe> stavkeNaruzbaRepository;
+        private readonly IRepository<Model.Database.StanjeNarudzbe> stanjeNarudzbaRepository;
         private readonly IMapper mapper;
 
-        public NarudzbaService(IRepository<Model.Database.Narudzba> naruzbaRepository, IRepository<Model.Database.StavkaNarudzbe> stavkeNaruzbaRepository, IMapper mapper)
+        public NarudzbaService(IRepository<Model.Database.Narudzba> naruzbaRepository, IRepository<Model.Database.StanjeNarudzbe> stanjeRepository, IRepository<Model.Database.StavkaNarudzbe> stavkeNaruzbaRepository, IMapper mapper)
         {
             this.naruzbaRepository = naruzbaRepository;
             this.stavkeNaruzbaRepository = stavkeNaruzbaRepository;
+            this.stanjeNarudzbaRepository = stanjeRepository;
             this.mapper = mapper;
         }
 
         public IEnumerable<Narudzba> GetAll()
         {
-            return mapper.Map<IEnumerable<Model.Models.Narudzba>>(naruzbaRepository.GetAllQueryable().Include(x => x.StavkaNarudzbe).Include(x => x.Kupac).ToList());
+            return mapper.Map<IEnumerable<Model.Models.Narudzba>>(naruzbaRepository.GetAllQueryable().Include(x => x.StanjeNarudzbe).Include(x => x.StavkaNarudzbe).Include(x => x.Kupac).ToList());
         }
 
         public Narudzba GetNarudzba(int id)
         {
-            return mapper.Map<Model.Models.Narudzba>(naruzbaRepository.GetAllQueryable().Include(x => x.StavkaNarudzbe).Include(x => x.Kupac).FirstOrDefault(x => x.Id == id));
+            return mapper.Map<Model.Models.Narudzba>(naruzbaRepository.GetAllQueryable().Include(x => x.StanjeNarudzbe).Include(x => x.StavkaNarudzbe).Include(x => x.Kupac).FirstOrDefault(x => x.Id == id));
+        }
+
+        public IEnumerable<Model.Database.StanjeNarudzbe> GetStanjaNarudzbi()
+        {
+            return stanjeNarudzbaRepository.GetAll();
         }
 
         public void InsertNarudzba(Model.Database.Narudzba narudzba, List<Model.Database.StavkaNarudzbe> stavke)

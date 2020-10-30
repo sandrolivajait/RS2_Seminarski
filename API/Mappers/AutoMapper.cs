@@ -52,7 +52,8 @@ namespace API.Mappers
 
             CreateMap<Model.Database.Narudzba, Model.Models.Narudzba>()
                 .ForMember(dest => dest.NarucenoStavki, opt => opt.MapFrom(src => src.StavkaNarudzbe.Count))
-                .ForMember(dest => dest.ImePrezimeKupca, opt => opt.MapFrom(src => src.Kupac.Ime + " " + src.Kupac.Prezime));
+                .ForMember(dest => dest.ImePrezimeKupca, opt => opt.MapFrom(src => src.Kupac.Ime + " " + src.Kupac.Prezime))
+                .ForMember(dest => dest.StanjeOpis, opt => opt.MapFrom(src => src.StanjeNarudzbe.Opis));
 
 
         }

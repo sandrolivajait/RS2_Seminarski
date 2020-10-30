@@ -34,8 +34,8 @@ namespace Windows.Administracija.Administratori
 
             var result = await narudzbe.Get<List<Model.Models.Narudzba>>(null);
 
-            dataGridViewZavrsene.DataSource = result.Where(x => x.Stanje == 5).ToList();
-            dataGridViewNezavrsene.DataSource = result.Where(x => x.Stanje != 5).ToList();
+            dataGridViewZavrsene.DataSource = result.Where(x => x.StanjeNarudzbeId == 4).ToList();
+            dataGridViewNezavrsene.DataSource = result.Where(x => x.StanjeNarudzbeId != 4).ToList();
         }
     }
 }

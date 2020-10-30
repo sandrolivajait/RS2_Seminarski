@@ -28,6 +28,7 @@ namespace RepositoryLayer
         public DbSet<Zupanija> Zupanije { get; set; }
         public DbSet<Kvar> Kvarovi { get; set; }
         public DbSet<StanjeKvara> StanjeKvara { get; set; }
+        public DbSet<StanjeNarudzbe> StanjeNarudzbe { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

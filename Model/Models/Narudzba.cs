@@ -12,8 +12,9 @@ namespace Model.Models
         public string Datum { get; set; }
 
 
-        // 1 = Obrada, 2 = Posiljka poslana
-        public int Stanje { get; set; }
+       
+        public int StanjeNarudzbeId { get; set; }
+        public string StanjeOpis { get; set; }
 
         public string KontaktTelefon { get; set; }
 

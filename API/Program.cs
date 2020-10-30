@@ -47,7 +47,7 @@ namespace API
                 KontaktTelefon = "063513758",
                 KupacId = 1,
                 PostanskiBroj = "88260",
-                Stanje = 1,
+                StanjeNarudzbeId = 1,
                 Opcina = "Citluk",
                 UkupnaCijena = 1500d,
                 Ulica = "Markovac 36"
@@ -73,7 +73,7 @@ namespace API
                 KontaktTelefon = "063513758",
                 KupacId = 1,
                 PostanskiBroj = "88260",
-                Stanje = 5,
+                StanjeNarudzbeId = 5,
                 Opcina = "Citluk",
                 UkupnaCijena = 1500d,
                 Ulica = "Markovac 36"

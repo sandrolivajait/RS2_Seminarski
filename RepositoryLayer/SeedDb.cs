@@ -27,6 +27,11 @@ namespace RepositoryLayer
                 new StanjeKvara { Id = 3, Opis = "mobitel popravljen" },
                 new StanjeKvara { Id = 4, Opis = "mobitel vracen korisniku" });
 
+            modelBuilder.Entity<StanjeNarudzbe>().HasData(new StanjeNarudzbe { Id = 1, Opis = "Zaprimljeno" },
+                new StanjeKvara { Id = 2, Opis = "Obrada" },
+                new StanjeKvara { Id = 3, Opis = "Poslano" },
+                new StanjeKvara { Id = 4, Opis = "Zavrseno" });
+
 
 
 

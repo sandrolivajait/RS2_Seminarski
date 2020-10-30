@@ -12,6 +12,6 @@ namespace ServiceLayer.Interfaces
         public IEnumerable<Model.Models.Narudzba> GetAll();
 
         public Model.Models.Narudzba GetNarudzba(int id);
-
+        IEnumerable<Model.Database.StanjeNarudzbe> GetStanjaNarudzbi();
     }
 }

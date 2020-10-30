@@ -34,23 +34,11 @@
             this.dataGridViewNezavrsene = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.narudzbaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ukupnaCijenaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.datumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stanjeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kontaktTelefonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kupacIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.imePrezimeKupcaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.opcinaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kantonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.postanskiBrojDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ulicaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.narucenoStavkiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.narudzbaBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ukupnaCijenaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.datumDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stanjeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stanjeNarudzbeIdDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stanjeOpisDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kontaktTelefonDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kupacIdDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.imePrezimeKupcaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,10 +47,22 @@
             this.postanskiBrojDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ulicaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.narucenoStavkiDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ukupnaCijenaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.datumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stanjeNarudzbeIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stanjeOpisDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kontaktTelefonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kupacIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.imePrezimeKupcaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.opcinaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kantonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.postanskiBrojDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ulicaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.narucenoStavkiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewZavrsene)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewNezavrsene)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.narudzbaBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.narudzbaBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewZavrsene
@@ -79,7 +79,8 @@
             this.idDataGridViewTextBoxColumn1,
             this.ukupnaCijenaDataGridViewTextBoxColumn1,
             this.datumDataGridViewTextBoxColumn1,
-            this.stanjeDataGridViewTextBoxColumn1,
+            this.stanjeNarudzbeIdDataGridViewTextBoxColumn1,
+            this.stanjeOpisDataGridViewTextBoxColumn1,
             this.kontaktTelefonDataGridViewTextBoxColumn1,
             this.kupacIdDataGridViewTextBoxColumn1,
             this.imePrezimeKupcaDataGridViewTextBoxColumn1,
@@ -88,7 +89,7 @@
             this.postanskiBrojDataGridViewTextBoxColumn1,
             this.ulicaDataGridViewTextBoxColumn1,
             this.narucenoStavkiDataGridViewTextBoxColumn1});
-            this.dataGridViewZavrsene.DataSource = this.narudzbaBindingSource1;
+            this.dataGridViewZavrsene.DataSource = this.narudzbaBindingSource;
             this.dataGridViewZavrsene.Location = new System.Drawing.Point(12, 458);
             this.dataGridViewZavrsene.Name = "dataGridViewZavrsene";
             this.dataGridViewZavrsene.ReadOnly = true;
@@ -118,7 +119,8 @@
             this.idDataGridViewTextBoxColumn,
             this.ukupnaCijenaDataGridViewTextBoxColumn,
             this.datumDataGridViewTextBoxColumn,
-            this.stanjeDataGridViewTextBoxColumn,
+            this.stanjeNarudzbeIdDataGridViewTextBoxColumn,
+            this.stanjeOpisDataGridViewTextBoxColumn,
             this.kontaktTelefonDataGridViewTextBoxColumn,
             this.kupacIdDataGridViewTextBoxColumn,
             this.imePrezimeKupcaDataGridViewTextBoxColumn,
@@ -148,106 +150,6 @@
             // 
             this.narudzbaBindingSource.DataSource = typeof(Model.Models.Narudzba);
             // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // ukupnaCijenaDataGridViewTextBoxColumn
-            // 
-            this.ukupnaCijenaDataGridViewTextBoxColumn.DataPropertyName = "UkupnaCijena";
-            this.ukupnaCijenaDataGridViewTextBoxColumn.HeaderText = "UkupnaCijena";
-            this.ukupnaCijenaDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.ukupnaCijenaDataGridViewTextBoxColumn.Name = "ukupnaCijenaDataGridViewTextBoxColumn";
-            this.ukupnaCijenaDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // datumDataGridViewTextBoxColumn
-            // 
-            this.datumDataGridViewTextBoxColumn.DataPropertyName = "Datum";
-            this.datumDataGridViewTextBoxColumn.HeaderText = "Datum";
-            this.datumDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.datumDataGridViewTextBoxColumn.Name = "datumDataGridViewTextBoxColumn";
-            this.datumDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // stanjeDataGridViewTextBoxColumn
-            // 
-            this.stanjeDataGridViewTextBoxColumn.DataPropertyName = "Stanje";
-            this.stanjeDataGridViewTextBoxColumn.HeaderText = "Stanje";
-            this.stanjeDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.stanjeDataGridViewTextBoxColumn.Name = "stanjeDataGridViewTextBoxColumn";
-            this.stanjeDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // kontaktTelefonDataGridViewTextBoxColumn
-            // 
-            this.kontaktTelefonDataGridViewTextBoxColumn.DataPropertyName = "KontaktTelefon";
-            this.kontaktTelefonDataGridViewTextBoxColumn.HeaderText = "KontaktTelefon";
-            this.kontaktTelefonDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.kontaktTelefonDataGridViewTextBoxColumn.Name = "kontaktTelefonDataGridViewTextBoxColumn";
-            this.kontaktTelefonDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // kupacIdDataGridViewTextBoxColumn
-            // 
-            this.kupacIdDataGridViewTextBoxColumn.DataPropertyName = "KupacId";
-            this.kupacIdDataGridViewTextBoxColumn.HeaderText = "KupacId";
-            this.kupacIdDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.kupacIdDataGridViewTextBoxColumn.Name = "kupacIdDataGridViewTextBoxColumn";
-            this.kupacIdDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // imePrezimeKupcaDataGridViewTextBoxColumn
-            // 
-            this.imePrezimeKupcaDataGridViewTextBoxColumn.DataPropertyName = "ImePrezimeKupca";
-            this.imePrezimeKupcaDataGridViewTextBoxColumn.HeaderText = "ImePrezimeKupca";
-            this.imePrezimeKupcaDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.imePrezimeKupcaDataGridViewTextBoxColumn.Name = "imePrezimeKupcaDataGridViewTextBoxColumn";
-            this.imePrezimeKupcaDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // opcinaDataGridViewTextBoxColumn
-            // 
-            this.opcinaDataGridViewTextBoxColumn.DataPropertyName = "Opcina";
-            this.opcinaDataGridViewTextBoxColumn.HeaderText = "Opcina";
-            this.opcinaDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.opcinaDataGridViewTextBoxColumn.Name = "opcinaDataGridViewTextBoxColumn";
-            this.opcinaDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // kantonDataGridViewTextBoxColumn
-            // 
-            this.kantonDataGridViewTextBoxColumn.DataPropertyName = "Kanton";
-            this.kantonDataGridViewTextBoxColumn.HeaderText = "Kanton";
-            this.kantonDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.kantonDataGridViewTextBoxColumn.Name = "kantonDataGridViewTextBoxColumn";
-            this.kantonDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // postanskiBrojDataGridViewTextBoxColumn
-            // 
-            this.postanskiBrojDataGridViewTextBoxColumn.DataPropertyName = "PostanskiBroj";
-            this.postanskiBrojDataGridViewTextBoxColumn.HeaderText = "PostanskiBroj";
-            this.postanskiBrojDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.postanskiBrojDataGridViewTextBoxColumn.Name = "postanskiBrojDataGridViewTextBoxColumn";
-            this.postanskiBrojDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // ulicaDataGridViewTextBoxColumn
-            // 
-            this.ulicaDataGridViewTextBoxColumn.DataPropertyName = "Ulica";
-            this.ulicaDataGridViewTextBoxColumn.HeaderText = "Ulica";
-            this.ulicaDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.ulicaDataGridViewTextBoxColumn.Name = "ulicaDataGridViewTextBoxColumn";
-            this.ulicaDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // narucenoStavkiDataGridViewTextBoxColumn
-            // 
-            this.narucenoStavkiDataGridViewTextBoxColumn.DataPropertyName = "NarucenoStavki";
-            this.narucenoStavkiDataGridViewTextBoxColumn.HeaderText = "NarucenoStavki";
-            this.narucenoStavkiDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.narucenoStavkiDataGridViewTextBoxColumn.Name = "narucenoStavkiDataGridViewTextBoxColumn";
-            this.narucenoStavkiDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // narudzbaBindingSource1
-            // 
-            this.narudzbaBindingSource1.DataSource = typeof(Model.Models.Narudzba);
-            // 
             // idDataGridViewTextBoxColumn1
             // 
             this.idDataGridViewTextBoxColumn1.DataPropertyName = "Id";
@@ -272,13 +174,22 @@
             this.datumDataGridViewTextBoxColumn1.Name = "datumDataGridViewTextBoxColumn1";
             this.datumDataGridViewTextBoxColumn1.ReadOnly = true;
             // 
-            // stanjeDataGridViewTextBoxColumn1
+            // stanjeNarudzbeIdDataGridViewTextBoxColumn1
             // 
-            this.stanjeDataGridViewTextBoxColumn1.DataPropertyName = "Stanje";
-            this.stanjeDataGridViewTextBoxColumn1.HeaderText = "Stanje";
-            this.stanjeDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.stanjeDataGridViewTextBoxColumn1.Name = "stanjeDataGridViewTextBoxColumn1";
-            this.stanjeDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.stanjeNarudzbeIdDataGridViewTextBoxColumn1.DataPropertyName = "StanjeNarudzbeId";
+            this.stanjeNarudzbeIdDataGridViewTextBoxColumn1.HeaderText = "StanjeNarudzbeId";
+            this.stanjeNarudzbeIdDataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.stanjeNarudzbeIdDataGridViewTextBoxColumn1.Name = "stanjeNarudzbeIdDataGridViewTextBoxColumn1";
+            this.stanjeNarudzbeIdDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.stanjeNarudzbeIdDataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // stanjeOpisDataGridViewTextBoxColumn1
+            // 
+            this.stanjeOpisDataGridViewTextBoxColumn1.DataPropertyName = "StanjeOpis";
+            this.stanjeOpisDataGridViewTextBoxColumn1.HeaderText = "StanjeOpis";
+            this.stanjeOpisDataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.stanjeOpisDataGridViewTextBoxColumn1.Name = "stanjeOpisDataGridViewTextBoxColumn1";
+            this.stanjeOpisDataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // kontaktTelefonDataGridViewTextBoxColumn1
             // 
@@ -344,6 +255,111 @@
             this.narucenoStavkiDataGridViewTextBoxColumn1.Name = "narucenoStavkiDataGridViewTextBoxColumn1";
             this.narucenoStavkiDataGridViewTextBoxColumn1.ReadOnly = true;
             // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // ukupnaCijenaDataGridViewTextBoxColumn
+            // 
+            this.ukupnaCijenaDataGridViewTextBoxColumn.DataPropertyName = "UkupnaCijena";
+            this.ukupnaCijenaDataGridViewTextBoxColumn.HeaderText = "UkupnaCijena";
+            this.ukupnaCijenaDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.ukupnaCijenaDataGridViewTextBoxColumn.Name = "ukupnaCijenaDataGridViewTextBoxColumn";
+            this.ukupnaCijenaDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // datumDataGridViewTextBoxColumn
+            // 
+            this.datumDataGridViewTextBoxColumn.DataPropertyName = "Datum";
+            this.datumDataGridViewTextBoxColumn.HeaderText = "Datum";
+            this.datumDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.datumDataGridViewTextBoxColumn.Name = "datumDataGridViewTextBoxColumn";
+            this.datumDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // stanjeNarudzbeIdDataGridViewTextBoxColumn
+            // 
+            this.stanjeNarudzbeIdDataGridViewTextBoxColumn.DataPropertyName = "StanjeNarudzbeId";
+            this.stanjeNarudzbeIdDataGridViewTextBoxColumn.HeaderText = "StanjeNarudzbeId";
+            this.stanjeNarudzbeIdDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.stanjeNarudzbeIdDataGridViewTextBoxColumn.Name = "stanjeNarudzbeIdDataGridViewTextBoxColumn";
+            this.stanjeNarudzbeIdDataGridViewTextBoxColumn.Visible = false;
+            this.stanjeNarudzbeIdDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // stanjeOpisDataGridViewTextBoxColumn
+            // 
+            this.stanjeOpisDataGridViewTextBoxColumn.DataPropertyName = "StanjeOpis";
+            this.stanjeOpisDataGridViewTextBoxColumn.HeaderText = "StanjeOpis";
+            this.stanjeOpisDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.stanjeOpisDataGridViewTextBoxColumn.Name = "stanjeOpisDataGridViewTextBoxColumn";
+            this.stanjeOpisDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // kontaktTelefonDataGridViewTextBoxColumn
+            // 
+            this.kontaktTelefonDataGridViewTextBoxColumn.DataPropertyName = "KontaktTelefon";
+            this.kontaktTelefonDataGridViewTextBoxColumn.HeaderText = "KontaktTelefon";
+            this.kontaktTelefonDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.kontaktTelefonDataGridViewTextBoxColumn.Name = "kontaktTelefonDataGridViewTextBoxColumn";
+            this.kontaktTelefonDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // kupacIdDataGridViewTextBoxColumn
+            // 
+            this.kupacIdDataGridViewTextBoxColumn.DataPropertyName = "KupacId";
+            this.kupacIdDataGridViewTextBoxColumn.HeaderText = "KupacId";
+            this.kupacIdDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.kupacIdDataGridViewTextBoxColumn.Name = "kupacIdDataGridViewTextBoxColumn";
+            this.kupacIdDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // imePrezimeKupcaDataGridViewTextBoxColumn
+            // 
+            this.imePrezimeKupcaDataGridViewTextBoxColumn.DataPropertyName = "ImePrezimeKupca";
+            this.imePrezimeKupcaDataGridViewTextBoxColumn.HeaderText = "ImePrezimeKupca";
+            this.imePrezimeKupcaDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.imePrezimeKupcaDataGridViewTextBoxColumn.Name = "imePrezimeKupcaDataGridViewTextBoxColumn";
+            this.imePrezimeKupcaDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // opcinaDataGridViewTextBoxColumn
+            // 
+            this.opcinaDataGridViewTextBoxColumn.DataPropertyName = "Opcina";
+            this.opcinaDataGridViewTextBoxColumn.HeaderText = "Opcina";
+            this.opcinaDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.opcinaDataGridViewTextBoxColumn.Name = "opcinaDataGridViewTextBoxColumn";
+            this.opcinaDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // kantonDataGridViewTextBoxColumn
+            // 
+            this.kantonDataGridViewTextBoxColumn.DataPropertyName = "Kanton";
+            this.kantonDataGridViewTextBoxColumn.HeaderText = "Kanton";
+            this.kantonDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.kantonDataGridViewTextBoxColumn.Name = "kantonDataGridViewTextBoxColumn";
+            this.kantonDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // postanskiBrojDataGridViewTextBoxColumn
+            // 
+            this.postanskiBrojDataGridViewTextBoxColumn.DataPropertyName = "PostanskiBroj";
+            this.postanskiBrojDataGridViewTextBoxColumn.HeaderText = "PostanskiBroj";
+            this.postanskiBrojDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.postanskiBrojDataGridViewTextBoxColumn.Name = "postanskiBrojDataGridViewTextBoxColumn";
+            this.postanskiBrojDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // ulicaDataGridViewTextBoxColumn
+            // 
+            this.ulicaDataGridViewTextBoxColumn.DataPropertyName = "Ulica";
+            this.ulicaDataGridViewTextBoxColumn.HeaderText = "Ulica";
+            this.ulicaDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.ulicaDataGridViewTextBoxColumn.Name = "ulicaDataGridViewTextBoxColumn";
+            this.ulicaDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // narucenoStavkiDataGridViewTextBoxColumn
+            // 
+            this.narucenoStavkiDataGridViewTextBoxColumn.DataPropertyName = "NarucenoStavki";
+            this.narucenoStavkiDataGridViewTextBoxColumn.HeaderText = "NarucenoStavki";
+            this.narucenoStavkiDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.narucenoStavkiDataGridViewTextBoxColumn.Name = "narucenoStavkiDataGridViewTextBoxColumn";
+            this.narucenoStavkiDataGridViewTextBoxColumn.Width = 125;
+            // 
             // frmNarudzbe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -359,7 +375,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewZavrsene)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewNezavrsene)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.narudzbaBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.narudzbaBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -374,7 +389,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ukupnaCijenaDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn datumDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stanjeDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stanjeNarudzbeIdDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stanjeOpisDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn kontaktTelefonDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn kupacIdDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn imePrezimeKupcaDataGridViewTextBoxColumn1;
@@ -383,11 +399,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn postanskiBrojDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ulicaDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn narucenoStavkiDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.BindingSource narudzbaBindingSource1;
+        private System.Windows.Forms.BindingSource narudzbaBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ukupnaCijenaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn datumDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stanjeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stanjeNarudzbeIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stanjeOpisDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn kontaktTelefonDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn kupacIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn imePrezimeKupcaDataGridViewTextBoxColumn;
@@ -396,6 +413,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn postanskiBrojDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ulicaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn narucenoStavkiDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource narudzbaBindingSource;
     }
 }
