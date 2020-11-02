@@ -13,5 +13,8 @@ namespace ServiceLayer.Interfaces
 
         public Model.Models.Narudzba GetNarudzba(int id);
         IEnumerable<Model.Database.StanjeNarudzbe> GetStanjaNarudzbi();
+
+        public void Insert(NarudzbaInsertRequest request);
+        public void Update(int id, NarudzbaInsertRequest request);
     }
 }

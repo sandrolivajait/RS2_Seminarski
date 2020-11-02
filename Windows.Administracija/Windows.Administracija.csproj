@@ -165,6 +165,9 @@
     <EmbeddedResource Include="Naruzbe\frmNarudzbe.resx">
       <DependentUpon>frmNarudzbe.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Naruzbe\frmNarudzbeDetalji.resx">
+      <DependentUpon>frmNarudzbeDetalji.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="StartForm.resx">
       <DependentUpon>StartForm.cs</DependentUpon>
     </EmbeddedResource>

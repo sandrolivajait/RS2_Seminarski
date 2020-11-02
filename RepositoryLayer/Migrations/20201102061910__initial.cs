@@ -132,6 +132,19 @@ namespace RepositoryLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "StanjeNarudzbe",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Opis = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_StanjeNarudzbe", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Zupanije",
                 columns: table => new
                 {
@@ -288,7 +301,7 @@ namespace RepositoryLayer.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UkupnaCijena = table.Column<double>(nullable: false),
                     Datum = table.Column<DateTime>(nullable: false),
-                    Stanje = table.Column<int>(nullable: false),
+                    StanjeNarudzbeId = table.Column<int>(nullable: false),
                     KontaktTelefon = table.Column<string>(nullable: true),
                     KupacId = table.Column<int>(nullable: false),
                     Opcina = table.Column<string>(nullable: true),
@@ -310,6 +323,12 @@ namespace RepositoryLayer.Migrations
                         name: "FK_Narudzbe_Kupci_KupacId",
                         column: x => x.KupacId,
                         principalTable: "Kupci",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Narudzbe_StanjeNarudzbe_StanjeNarudzbeId",
+                        column: x => x.StanjeNarudzbeId,
+                        principalTable: "StanjeNarudzbe",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -359,7 +378,7 @@ namespace RepositoryLayer.Migrations
             migrationBuilder.InsertData(
                 table: "Popusti",
                 columns: new[] { "Id", "DatumDo", "DatumOd", "PostotakPopusta" },
-                values: new object[] { 1, new DateTime(2020, 10, 29, 11, 9, 15, 424, DateTimeKind.Local).AddTicks(9494), new DateTime(2020, 10, 29, 11, 9, 15, 423, DateTimeKind.Local).AddTicks(8116), 0.1f });
+                values: new object[] { 1, new DateTime(2020, 11, 2, 9, 19, 9, 232, DateTimeKind.Local).AddTicks(7038), new DateTime(2020, 11, 2, 9, 19, 9, 231, DateTimeKind.Local).AddTicks(1328), 0.1f });
 
             migrationBuilder.InsertData(
                 table: "Proizvodjaci",
@@ -367,9 +386,9 @@ namespace RepositoryLayer.Migrations
                 values: new object[,]
                 {
                     { 8, "YEZZ" },
-                    { 7, "CAT" },
                     { 6, "Google" },
                     { 5, "Nokia" },
+                    { 7, "CAT" },
                     { 3, "Huawei" },
                     { 2, "Apple" },
                     { 1, "Samsung" },
@@ -385,6 +404,17 @@ namespace RepositoryLayer.Migrations
                     { 2, "mobitel zaprimljen" },
                     { 3, "mobitel popravljen" },
                     { 4, "mobitel vracen korisniku" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "StanjeNarudzbe",
+                columns: new[] { "Id", "Opis" },
+                values: new object[,]
+                {
+                    { 1, "Zaprimljeno" },
+                    { 2, "Obrada" },
+                    { 3, "Poslano" },
+                    { 4, "Zavrseno" }
                 });
 
             migrationBuilder.InsertData(
@@ -430,12 +460,12 @@ namespace RepositoryLayer.Migrations
             migrationBuilder.InsertData(
                 table: "Kupci",
                 columns: new[] { "Id", "BannedKupacId", "BrojMobitela", "BrojPokusaja", "DatumPokusaja", "Email", "GradId", "Ime", "LozinkaHash", "LozinkaSalt", "Prezime" },
-                values: new object[] { 1, null, "063525555", 0, new DateTime(2020, 10, 29, 11, 9, 15, 426, DateTimeKind.Local).AddTicks(2405), "kupac@kupac.com", 1, "kupac", null, null, "kupic" });
+                values: new object[] { 1, null, "063525555", 0, new DateTime(2020, 11, 2, 9, 19, 9, 234, DateTimeKind.Local).AddTicks(6607), "kupac@kupac.com", 1, "kupac", null, null, "kupic" });
 
             migrationBuilder.InsertData(
                 table: "Kvarovi",
                 columns: new[] { "Id", "BrojMobitela", "DatumKvara", "KupacId", "NazivMobitela", "OpisKvara", "StanjeKvaraId" },
-                values: new object[] { 1, "063513758", new DateTime(2020, 10, 29, 8, 9, 15, 426, DateTimeKind.Utc).AddTicks(5192), 1, "iPhone 10 XR", "otisao mu displej, ispao mi na beton.", 1 });
+                values: new object[] { 1, "063513758", new DateTime(2020, 11, 2, 6, 19, 9, 235, DateTimeKind.Utc).AddTicks(1080), 1, "iPhone 10 XR", "otisao mu displej, ispao mi na beton.", 1 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Gradovi_ZupanijaId",
@@ -488,6 +518,11 @@ namespace RepositoryLayer.Migrations
                 column: "KupacId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Narudzbe_StanjeNarudzbeId",
+                table: "Narudzbe",
+                column: "StanjeNarudzbeId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_StavkeNarudzbe_MobitelId",
                 table: "StavkeNarudzbe",
                 column: "MobitelId");
@@ -535,6 +570,9 @@ namespace RepositoryLayer.Migrations
 
             migrationBuilder.DropTable(
                 name: "Kupci");
+
+            migrationBuilder.DropTable(
+                name: "StanjeNarudzbe");
 
             migrationBuilder.DropTable(
                 name: "BannedKupci");

@@ -21,16 +21,16 @@ namespace RepositoryLayer
             , new Proizvodjac { Id = 4, Naziv = "Xiaomi" }, new Proizvodjac { Id = 5, Naziv = "Nokia" }, new Proizvodjac { Id = 6, Naziv = "Google" }, new Proizvodjac { Id = 7, Naziv = "CAT" }, new Proizvodjac { Id = 8, Naziv = "YEZZ" });
             modelBuilder.Entity<OperativniSustav>().HasData(new OperativniSustav { Id = 1, Verzija = 11f, Naziv = "Android" }, new OperativniSustav { Id = 2, Verzija = 13.4f, Naziv = "iOS" });
 
-            // ,, mobitel popravljen, mobitel vraćen korisniku
+           
             modelBuilder.Entity<StanjeKvara>().HasData(new StanjeKvara { Id = 1, Opis = "zahtjev poslan" },
                 new StanjeKvara { Id = 2, Opis = "mobitel zaprimljen" },
                 new StanjeKvara { Id = 3, Opis = "mobitel popravljen" },
                 new StanjeKvara { Id = 4, Opis = "mobitel vracen korisniku" });
 
             modelBuilder.Entity<StanjeNarudzbe>().HasData(new StanjeNarudzbe { Id = 1, Opis = "Zaprimljeno" },
-                new StanjeKvara { Id = 2, Opis = "Obrada" },
-                new StanjeKvara { Id = 3, Opis = "Poslano" },
-                new StanjeKvara { Id = 4, Opis = "Zavrseno" });
+                new StanjeNarudzbe { Id = 2, Opis = "Obrada" },
+                new StanjeNarudzbe { Id = 3, Opis = "Poslano" },
+                new StanjeNarudzbe { Id = 4, Opis = "Zavrseno" });
 
 
 

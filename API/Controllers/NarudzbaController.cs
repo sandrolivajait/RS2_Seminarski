@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Model.Models;
+using Model.Requests;
 using ServiceLayer.Interfaces;
 
 namespace API.Controllers
@@ -30,6 +31,17 @@ namespace API.Controllers
         public Narudzba GetById(int id)
         {
             return _narudzbaService.GetNarudzba(id);
+        }
+
+        [HttpPost]
+        public void Insert(NarudzbaInsertRequest request)
+        {
+            _narudzbaService.Insert(request);
+        }
+        [HttpPut("{id}")]
+        public void Update(int id, [FromBody] NarudzbaInsertRequest request)
+        {
+            _narudzbaService.Update(id, request);
         }
     }
 }

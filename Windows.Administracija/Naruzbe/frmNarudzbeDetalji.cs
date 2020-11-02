@@ -16,7 +16,7 @@ namespace Windows.Administracija.Naruzbe
     {
 
         private NarudzbaInsertRequest insertRequest = new NarudzbaInsertRequest();
-        private readonly APIService narudzbaService = new APIService("Narudzbe");
+        private readonly APIService narudzbaService = new APIService("Narudzba");
         private readonly APIService narudzbeStanjaService = new APIService("NarudzbeStanja");
         private int? _id = null;
         
@@ -52,6 +52,7 @@ namespace Windows.Administracija.Naruzbe
             insertRequest.KontaktTelefon = entity.KontaktTelefon;
            
             insertRequest.Opcina = entity.Kanton;
+            insertRequest.KupacId = entity.KupacId;
             insertRequest.PostanskiBroj = entity.Opcina;
             insertRequest.UkupnaCijena = entity.UkupnaCijena;
             insertRequest.StanjeNarudzbeId = entity.StanjeNarudzbeId;
@@ -65,12 +66,12 @@ namespace Windows.Administracija.Naruzbe
             if (!_id.HasValue)
             {
                 narudzbaService.Insert<Model.Models.Kvar>(insertRequest);
-                MessageBox.Show("Uspješno dodan kvar");
+                MessageBox.Show("Uspješno dodana narudzba.");
             }
             else
             {
                 narudzbaService.Update<Model.Models.Kvar>(_id.Value, insertRequest);
-                MessageBox.Show("Uspješno izmjenjeni podaci o kvaru");
+                MessageBox.Show("Uspješno izmjenjeni podaci o narudzbi");
             }
         }
     }

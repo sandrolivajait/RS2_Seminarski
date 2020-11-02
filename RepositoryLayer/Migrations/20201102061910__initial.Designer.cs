@@ -10,7 +10,7 @@ using RepositoryLayer;
 namespace RepositoryLayer.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20201029080915__initial")]
+    [Migration("20201102061910__initial")]
     partial class _initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -170,7 +170,7 @@ namespace RepositoryLayer.Migrations
                             Id = 1,
                             BrojMobitela = "063525555",
                             BrojPokusaja = 0,
-                            DatumPokusaja = new DateTime(2020, 10, 29, 11, 9, 15, 426, DateTimeKind.Local).AddTicks(2405),
+                            DatumPokusaja = new DateTime(2020, 11, 2, 9, 19, 9, 234, DateTimeKind.Local).AddTicks(6607),
                             Email = "kupac@kupac.com",
                             GradId = 1,
                             Ime = "kupac",
@@ -216,7 +216,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 1,
                             BrojMobitela = "063513758",
-                            DatumKvara = new DateTime(2020, 10, 29, 8, 9, 15, 426, DateTimeKind.Utc).AddTicks(5192),
+                            DatumKvara = new DateTime(2020, 11, 2, 6, 19, 9, 235, DateTimeKind.Utc).AddTicks(1080),
                             KupacId = 1,
                             NazivMobitela = "iPhone 10 XR",
                             OpisKvara = "otisao mu displej, ispao mi na beton.",
@@ -714,7 +714,7 @@ namespace RepositoryLayer.Migrations
                     b.Property<string>("PostanskiBroj")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Stanje")
+                    b.Property<int>("StanjeNarudzbeId")
                         .HasColumnType("int");
 
                     b.Property<double>("UkupnaCijena")
@@ -728,6 +728,8 @@ namespace RepositoryLayer.Migrations
                     b.HasIndex("GradId");
 
                     b.HasIndex("KupacId");
+
+                    b.HasIndex("StanjeNarudzbeId");
 
                     b.ToTable("Narudzbe");
                 });
@@ -788,8 +790,8 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 1,
-                            DatumDo = new DateTime(2020, 10, 29, 11, 9, 15, 424, DateTimeKind.Local).AddTicks(9494),
-                            DatumOd = new DateTime(2020, 10, 29, 11, 9, 15, 423, DateTimeKind.Local).AddTicks(8116),
+                            DatumDo = new DateTime(2020, 11, 2, 9, 19, 9, 232, DateTimeKind.Local).AddTicks(7038),
+                            DatumOd = new DateTime(2020, 11, 2, 9, 19, 9, 231, DateTimeKind.Local).AddTicks(1328),
                             PostotakPopusta = 0.1f
                         });
                 });
@@ -906,6 +908,43 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 4,
                             Opis = "mobitel vracen korisniku"
+                        });
+                });
+
+            modelBuilder.Entity("Model.Database.StanjeNarudzbe", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Opis")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("StanjeNarudzbe");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Opis = "Zaprimljeno"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Opis = "Obrada"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Opis = "Poslano"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Opis = "Zavrseno"
                         });
                 });
 
@@ -1030,6 +1069,12 @@ namespace RepositoryLayer.Migrations
                     b.HasOne("Model.Database.Kupac", "Kupac")
                         .WithMany("Narudzba")
                         .HasForeignKey("KupacId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Model.Database.StanjeNarudzbe", "StanjeNarudzbe")
+                        .WithMany()
+                        .HasForeignKey("StanjeNarudzbeId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });

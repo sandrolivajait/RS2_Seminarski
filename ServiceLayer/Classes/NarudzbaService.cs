@@ -41,6 +41,12 @@ namespace ServiceLayer.Classes
             return stanjeNarudzbaRepository.GetAll();
         }
 
+        public void Insert(NarudzbaInsertRequest request)
+        {
+            var narudzba = mapper.Map<Model.Database.Narudzba>(request);
+            naruzbaRepository.Insert(narudzba);
+        }
+
         public void InsertNarudzba(Model.Database.Narudzba narudzba, List<Model.Database.StavkaNarudzbe> stavke)
         {
             int id = naruzbaRepository.InsertAndReturnEntityId(narudzba);
@@ -48,6 +54,11 @@ namespace ServiceLayer.Classes
             stavkeNaruzbaRepository.InsertRange(stavke);
         }
 
-      
+        public void Update(int id, NarudzbaInsertRequest request)
+        {
+            var entity = naruzbaRepository.Get(id);
+            mapper.Map(request, entity);
+            naruzbaRepository.Update(entity);
+        }
     }
 }

@@ -48,7 +48,7 @@ namespace API.Mappers
                 .AfterMap((src, dest) => dest.LozinkaHash = SaltingHashes.GenerateHash(dest.LozinkaSalt, src.Password));
 
             CreateMap<Model.Requests.KvarInsertRequest, Model.Database.Kvar>();
-
+            CreateMap<Model.Requests.NarudzbaInsertRequest, Model.Database.Narudzba>();
 
             CreateMap<Model.Database.Narudzba, Model.Models.Narudzba>()
                 .ForMember(dest => dest.NarucenoStavki, opt => opt.MapFrom(src => src.StavkaNarudzbe.Count))

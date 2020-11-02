@@ -30,10 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridViewZavrsene = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dataGridViewNezavrsene = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.narudzbaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ukupnaCijenaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.datumDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,6 +43,9 @@
             this.postanskiBrojDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ulicaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.narucenoStavkiDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.narudzbaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.dataGridViewNezavrsene = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ukupnaCijenaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.datumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,9 +59,10 @@
             this.postanskiBrojDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ulicaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.narucenoStavkiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewZavrsene)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewNezavrsene)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.narudzbaBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewNezavrsene)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewZavrsene
@@ -98,57 +98,7 @@
             this.dataGridViewZavrsene.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewZavrsene.Size = new System.Drawing.Size(1749, 433);
             this.dataGridViewZavrsene.TabIndex = 0;
-            this.dataGridViewZavrsene.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAdministratori_CellDoubleClick);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 435);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 17);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Zavrsene";
-            // 
-            // dataGridViewNezavrsene
-            // 
-            this.dataGridViewNezavrsene.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridViewNezavrsene.AutoGenerateColumns = false;
-            this.dataGridViewNezavrsene.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewNezavrsene.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
-            this.ukupnaCijenaDataGridViewTextBoxColumn,
-            this.datumDataGridViewTextBoxColumn,
-            this.stanjeNarudzbeIdDataGridViewTextBoxColumn,
-            this.stanjeOpisDataGridViewTextBoxColumn,
-            this.kontaktTelefonDataGridViewTextBoxColumn,
-            this.kupacIdDataGridViewTextBoxColumn,
-            this.imePrezimeKupcaDataGridViewTextBoxColumn,
-            this.opcinaDataGridViewTextBoxColumn,
-            this.kantonDataGridViewTextBoxColumn,
-            this.postanskiBrojDataGridViewTextBoxColumn,
-            this.ulicaDataGridViewTextBoxColumn,
-            this.narucenoStavkiDataGridViewTextBoxColumn});
-            this.dataGridViewNezavrsene.DataSource = this.narudzbaBindingSource;
-            this.dataGridViewNezavrsene.Location = new System.Drawing.Point(12, 37);
-            this.dataGridViewNezavrsene.Name = "dataGridViewNezavrsene";
-            this.dataGridViewNezavrsene.RowHeadersWidth = 51;
-            this.dataGridViewNezavrsene.RowTemplate.Height = 24;
-            this.dataGridViewNezavrsene.Size = new System.Drawing.Size(1749, 395);
-            this.dataGridViewNezavrsene.TabIndex = 3;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(84, 17);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Nezavrsene";
-            // 
-            // narudzbaBindingSource
-            // 
-            this.narudzbaBindingSource.DataSource = typeof(Model.Models.Narudzba);
+            this.dataGridViewZavrsene.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewZavrsene_CellDoubleClick);
             // 
             // idDataGridViewTextBoxColumn1
             // 
@@ -255,6 +205,48 @@
             this.narucenoStavkiDataGridViewTextBoxColumn1.Name = "narucenoStavkiDataGridViewTextBoxColumn1";
             this.narucenoStavkiDataGridViewTextBoxColumn1.ReadOnly = true;
             // 
+            // narudzbaBindingSource
+            // 
+            this.narudzbaBindingSource.DataSource = typeof(Model.Models.Narudzba);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 435);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(68, 17);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Zavrsene";
+            // 
+            // dataGridViewNezavrsene
+            // 
+            this.dataGridViewNezavrsene.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewNezavrsene.AutoGenerateColumns = false;
+            this.dataGridViewNezavrsene.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewNezavrsene.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn,
+            this.ukupnaCijenaDataGridViewTextBoxColumn,
+            this.datumDataGridViewTextBoxColumn,
+            this.stanjeNarudzbeIdDataGridViewTextBoxColumn,
+            this.stanjeOpisDataGridViewTextBoxColumn,
+            this.kontaktTelefonDataGridViewTextBoxColumn,
+            this.kupacIdDataGridViewTextBoxColumn,
+            this.imePrezimeKupcaDataGridViewTextBoxColumn,
+            this.opcinaDataGridViewTextBoxColumn,
+            this.kantonDataGridViewTextBoxColumn,
+            this.postanskiBrojDataGridViewTextBoxColumn,
+            this.ulicaDataGridViewTextBoxColumn,
+            this.narucenoStavkiDataGridViewTextBoxColumn});
+            this.dataGridViewNezavrsene.DataSource = this.narudzbaBindingSource;
+            this.dataGridViewNezavrsene.Location = new System.Drawing.Point(12, 37);
+            this.dataGridViewNezavrsene.Name = "dataGridViewNezavrsene";
+            this.dataGridViewNezavrsene.RowHeadersWidth = 51;
+            this.dataGridViewNezavrsene.RowTemplate.Height = 24;
+            this.dataGridViewNezavrsene.Size = new System.Drawing.Size(1749, 395);
+            this.dataGridViewNezavrsene.TabIndex = 3;
+            this.dataGridViewNezavrsene.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewNezavrsene_CellDoubleClick);
+            // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
@@ -360,6 +352,15 @@
             this.narucenoStavkiDataGridViewTextBoxColumn.Name = "narucenoStavkiDataGridViewTextBoxColumn";
             this.narucenoStavkiDataGridViewTextBoxColumn.Width = 125;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(13, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(84, 17);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Nezavrsene";
+            // 
             // frmNarudzbe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -373,8 +374,8 @@
             this.Text = "Narudzbe";
             this.Load += new System.EventHandler(this.frmNarudzbe_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewZavrsene)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewNezavrsene)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.narudzbaBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewNezavrsene)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

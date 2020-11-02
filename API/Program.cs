@@ -73,7 +73,7 @@ namespace API
                 KontaktTelefon = "063513758",
                 KupacId = 1,
                 PostanskiBroj = "88260",
-                StanjeNarudzbeId = 5,
+                StanjeNarudzbeId = 4,
                 Opcina = "Citluk",
                 UkupnaCijena = 1500d,
                 Ulica = "Markovac 36"

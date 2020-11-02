@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Windows.Administracija.Naruzbe;
 
 namespace Windows.Administracija.Administratori
 {
@@ -19,13 +20,7 @@ namespace Windows.Administracija.Administratori
 
         }
 
-        private void dataGridViewAdministratori_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            var administratorid = dataGridViewZavrsene.Rows[e.RowIndex].Cells[0].Value;
-
-            frmAdministratorDetalj frm = new frmAdministratorDetalj(int.Parse(administratorid.ToString()));
-            frm.Show();
-        }
+       
 
         private async void frmNarudzbe_Load(object sender, EventArgs e)
         {
@@ -36,6 +31,22 @@ namespace Windows.Administracija.Administratori
 
             dataGridViewZavrsene.DataSource = result.Where(x => x.StanjeNarudzbeId == 4).ToList();
             dataGridViewNezavrsene.DataSource = result.Where(x => x.StanjeNarudzbeId != 4).ToList();
+        }
+
+        private void dataGridViewNezavrsene_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var nezavrseneDoubleClick = dataGridViewNezavrsene.Rows[e.RowIndex].Cells[0].Value;
+
+            frmNarudzbeDetalji frm = new frmNarudzbeDetalji(int.Parse(nezavrseneDoubleClick.ToString()));
+            frm.Show();
+        }
+
+        private void dataGridViewZavrsene_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var nezavrseneDoubleClick = dataGridViewZavrsene.Rows[e.RowIndex].Cells[0].Value;
+
+            frmNarudzbeDetalji frm = new frmNarudzbeDetalji(int.Parse(nezavrseneDoubleClick.ToString()));
+            frm.Show();
         }
     }
 }
